@@ -12,7 +12,7 @@ class NumberType {
 }
 
 describe("command parser", ()=>{
-    it.skip("Mandatory ambiguity 1", ()=>{
+    it("Mandatory ambiguity 1", ()=>{
         let result;
         const mcdl = `
         test
@@ -27,6 +27,9 @@ describe("command parser", ()=>{
         });
         expect(trees).not.toBeNull();
         const parser = new CommandParser(trees![0]);
+        parser.errorListener = (e) => {
+            console.error(e);
+        };
         parser.recordLog = true;
         parser
             .registerVarType("Int", (cmds)=> {

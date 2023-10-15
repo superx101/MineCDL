@@ -55,7 +55,7 @@ export class CommandParser {
     }
 
     set errorListener(listener: ErrorListener) {
-        this.errorListener = listener;
+        this._errorListener = listener;
     }
 
     protected addLog(logType: LogType, msg: string): void {
@@ -105,6 +105,8 @@ export class CommandParser {
                 optional.push([node, null]);
                 continue;
             }
+            if (node.parmCount > paramStack.length)
+                continue;
             const params = paramStack.slice(0, node.parmCount < 0 ? paramStack.length : node.parmCount);
             const varConstructor = this._varConstructorMap.get(node.type!)!;
             const variable: Variable = varConstructor(params);
