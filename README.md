@@ -1,2 +1,2 @@
 # MineCDL
-MineCDL is a minecraft command definition language and parser. It can be used for custom command parsing and generating object code for other platforms
+MineCDL is a Minecraft command definition language and parser for custom command parsing or generating code for other platforms.
