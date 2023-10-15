@@ -1,0 +1,77 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        // must use \" instead of \' 
+        "quotes": [
+            "error",
+            "double"
+        ],
+        // add ;
+        "semi": [
+            "error",
+            "always"
+        ],
+        // space -> 
+        "no-trailing-spaces": "error",
+        // fn(x,y,z) -> fn(\nx,\ny,\nz\n)
+        "function-paren-newline": ["error", "multiline"],
+        // fn () -> fn()
+        "@typescript-eslint/func-call-spacing": ["error", "never"], 
+        // if() -> if ()
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        // fn()\n{} -> fn() {\n }
+        "brace-style": ["error", "stroustrup"],
+        // {x} -> { x }
+        "object-curly-spacing": ["error", "always"],
+        // //doc -> // doc
+        "spaced-comment": ["error", "always", { "markers": ["/"] }],
+        // 10,9 -> 10, 9
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        // [ x, 10 ] -> [x, 10]
+        "array-bracket-spacing": ["error", "never"],
+        // if() { only one statement } -> if() \n statement
+        "curly": ["error", "multi", "consistent"],
+        // explicit: public private protected
+        "@typescript-eslint/explicit-member-accessibility": [
+            "error",
+            {
+              "accessibility": "explicit",
+              "overrides": {
+                "accessors": "off",
+                "constructors": "no-public",
+                "methods": "explicit",
+                "properties": "explicit",
+                "parameterProperties": "explicit"
+              }
+            }
+          ],
+        //   "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/ban-types": "off"
+    }
+}

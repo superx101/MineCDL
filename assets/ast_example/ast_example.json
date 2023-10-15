@@ -1,0 +1,466 @@
+{
+  "type": "virtual root",
+  "text": "",
+  "children": [
+    {
+      "type": "RootDeclareContext",
+      "text": "cmd1|tp",
+      "children": [
+        {
+          "type": "MandEnumDefContext",
+          "text": "cmd1|tp",
+          "children": [
+            {
+              "type": "EnumNameContext",
+              "text": "cmd1",
+              "children": []
+            },
+            {
+              "type": "EnumNameContext",
+              "text": "tp",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "    <target>:Target<<1",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ExplicitVariableDefContext",
+          "text": "<target>:Target<<1",
+          "children": [
+            {
+              "type": "MandVaribaleDefContext",
+              "text": "<target>",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "target",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ExplicitTypeDefContext",
+              "text": "Target<<1",
+              "children": [
+                {
+                  "type": "TypeNameContext",
+                  "text": "Target",
+                  "children": []
+                },
+                {
+                  "type": "IntCountContext",
+                  "text": "1",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "        [target]",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ImplicitVariableDefContext",
+          "text": "[target]",
+          "children": [
+            {
+              "type": "OptVariableDefContext",
+              "text": "[target]",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "target",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "            f1()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f1",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "        <pos>:PosInt<<3",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ExplicitVariableDefContext",
+          "text": "<pos>:PosInt<<3",
+          "children": [
+            {
+              "type": "MandVaribaleDefContext",
+              "text": "<pos>",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "pos",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ExplicitTypeDefContext",
+              "text": "PosInt<<3",
+              "children": [
+                {
+                  "type": "TypeNameContext",
+                  "text": "PosInt",
+                  "children": []
+                },
+                {
+                  "type": "IntCountContext",
+                  "text": "3",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "            f2()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f2",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "    <pos>",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ImplicitVariableDefContext",
+          "text": "<pos>",
+          "children": [
+            {
+              "type": "MandVaribaleDefContext",
+              "text": "<pos>",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "pos",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "        f3()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f3",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "EnumDeclareContext",
+      "text": "    (up|down)",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "OptEnumDefContext",
+          "text": "(up|down)",
+          "children": [
+            {
+              "type": "EnumNameContext",
+              "text": "up",
+              "children": []
+            },
+            {
+              "type": "EnumNameContext",
+              "text": "down",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "        [distance]:Int<<1",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ExplicitVariableDefContext",
+          "text": "[distance]:Int<<1",
+          "children": [
+            {
+              "type": "OptVariableDefContext",
+              "text": "[distance]",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "distance",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ExplicitTypeDefContext",
+              "text": "Int<<1",
+              "children": [
+                {
+                  "type": "TypeNameContext",
+                  "text": "Int",
+                  "children": []
+                },
+                {
+                  "type": "IntCountContext",
+                  "text": "1",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "            f4()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f4",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "VariableDeclareContext",
+      "text": "    <target>:Target",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "ExplicitVariableDefContext",
+          "text": "<target>:Target",
+          "children": [
+            {
+              "type": "MandVaribaleDefContext",
+              "text": "<target>",
+              "children": [
+                {
+                  "type": "VarNameContext",
+                  "text": "target",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ImplicitTypeDefContext",
+              "text": "Target",
+              "children": [
+                {
+                  "type": "TypeNameContext",
+                  "text": "Target",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "        f5()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f5",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "    f6()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f6",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "RootDeclareContext",
+      "text": "cmd2",
+      "children": [
+        {
+          "type": "MandEnumDefContext",
+          "text": "cmd2",
+          "children": [
+            {
+              "type": "EnumNameContext",
+              "text": "cmd2",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FunctionDeclareContext",
+      "text": "    f1()",
+      "children": [
+        {
+          "type": "IndentContext",
+          "text": "    ",
+          "children": []
+        },
+        {
+          "type": "FuncNameContext",
+          "text": "f1",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

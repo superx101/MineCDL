@@ -1,0 +1,34 @@
+{
+  "name": "mcdl-parser",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npx jest",
+    "antlr4": "antlr4ts ./src/mcdl/antlr/Mcdl.g4 -o ./src/mcdl/antlr",
+    "fix": "npx eslint --fix src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "antlr4ts": "^0.5.0-alpha.4"
+  },
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "@types/antlr4": "^4.11.3",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.8.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "antlr4ts-cli": "^0.5.0-alpha.4",
+    "eslint": "^8.51.0",
+    "eslint-config-standard-with-typescript": "^39.1.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
