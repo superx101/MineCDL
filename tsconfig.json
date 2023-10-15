@@ -3,15 +3,15 @@
     "target": "ES2016",
     "experimentalDecorators": true,
     "module": "commonjs",
-    "rootDir": ".",
+    "rootDir": "./src",
     // "sourceMap": true,
     "outDir": "./dist",
     "declaration": true,
-    "declarationDir": "./types",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "tests/**/*"]
 }

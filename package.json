@@ -1,14 +1,16 @@
 {
-  "name": "mcdl-parser",
-  "version": "1.0.0",
+  "name": "minecdl",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "npx jest",
     "antlr4": "antlr4ts ./src/mcdl/antlr/Mcdl.g4 -o ./src/mcdl/antlr",
     "fix": "npx eslint --fix src"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "superx101 (Github: superx101)",
+  "license": "GPL-3.0",
+  "files": ["dist/*"],
   "dependencies": {
     "antlr4ts": "^0.5.0-alpha.4"
   },
