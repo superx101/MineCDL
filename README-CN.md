@@ -1,10 +1,10 @@
 # MineCDL
 
-English | [简体中文](./README-CN.md)
+[English](./README.md) | 简体中文
 
-MineCDL is a javascript/typescript library for custom command parsing or generating code for other platforms.
+MineCDL 是一个 javascript/typescript 库，用于自定义命令解析或为其他平台生成代码。
 
-You can quickly define some commands use MCDL (MineCraft Command Definition Language) as :
+您可以使用 MCDL（MineCraft Command Definition Language，MineCraft 命令定义语言）快速定义一些命令：
 
 ```mcdl
 tp | teleport
@@ -26,7 +26,7 @@ help
     f1()
 ```
 
-These three command trees are equivalent to these minecraft style statements below :
+这三个命令树相当于下面这些 minecraft 风格的语句：
 
 `tp <target: Target> [target: Target]`
 
@@ -56,24 +56,24 @@ These three command trees are equivalent to these minecraft style statements bel
 
 `help`
 
-## Installation
+## 安装
 
-Run 
+运行
 
 ```shell
 npm install minecdl
-``` 
+```
 
-to install the library and all its dependecies.
+来安装该库及其所有依赖库。
 
-## MCDL Syntax
-Refer to the [documentation](https://superx101.github.io/MineCDL/)
+## MCDL 语法
+请参阅[文档](https://superx101.github.io/MineCDL/)
 
-## Command Parser
+## 命令解析器
 
-For command trees generated from MCDL, you can choose to parse them using the built-in command parser in this library, as demonstrated in the following code:
+对于从 MCDL 生成的命令树，你可以选择使用本库内置的命令解析器进行解析，如下代码所示：
 
-> For the complete example, please refer to [example.ts](./example/parser/example.ts) or [example.js](./example/parser/example.js).
+> 有关完整示例，请参阅 [example.ts](./example/parser/example.ts) 或 [example.js](./example/parser/example.js) 。
 
 ```typescript
 const parser = new CommandParser(trees[0]); // trees is contructed by CommandTreeBuilder
@@ -130,6 +130,6 @@ console.log(parser.parse("#tp_test"))
 // false Unable to match parameter >>_test<<
 ```
 
-Alternatively, you can also use the corresponding code generator to generate instruction registration code for other platforms and languages.
+此外，您还可以使用相应的代码生成器生成其他平台和语言的指令注册代码。
 
-> TODO: This section is not yet implemented.
+> TODO: 此部分尚未实现。
