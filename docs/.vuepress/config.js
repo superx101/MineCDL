@@ -1,5 +1,5 @@
 module.exports = {
-  base: './',
+  base: '/MineCDL/',
   title: 'MineCDL',
   themeConfig: {
     docsDir: 'docs',
