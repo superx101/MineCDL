@@ -14,6 +14,6 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.WORKFLOW }}
         TARGET_REPO: superx101/MineCDL
-        TARGET_BRANCH: main
+        TARGET_BRANCH: docs
         BUILD_SCRIPT: yarn && yarn docs:build
         BUILD_DIR: docs/.vuepress/dist
