@@ -73,7 +73,7 @@ npm install minecdl
 
 对于从 MCDL 生成的命令树，你可以选择使用本库内置的命令解析器进行解析，如下代码所示：
 
-> 有关完整示例，请参阅 [example.ts](./example/parser/example.ts) 或 [example.js](./example/parser/example.js) 。
+> 有关完整示例，请参阅 [example.ts](https://github.com/superx101/MineCDL/blob/main/example/parser/example.ts) 或 [example.js](https://github.com/superx101/MineCDL/blob/main/example/parser/example.js) 。
 
 ```typescript
 const parser = new CommandParser(trees[0]); // trees is contructed by CommandTreeBuilder
