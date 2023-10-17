@@ -71,7 +71,7 @@ Refer to the [documentation](https://superx101.github.io/MineCDL/)
 
 For command trees generated from MCDL, you can choose to parse them using the built-in command parser in this library, as demonstrated in the following code:
 
-> For the complete example, please refer to [example.ts](./example/parser/example.ts) or [example.js](./example/parser/example.js).
+> For the complete example, please refer to [example.ts](./tree/main/example/example/parser/example.ts) or [example.js](./tree/main/example/parser/example.js).
 
 ```typescript
 const parser = new CommandParser(trees[0]); // trees is contructed by CommandTreeBuilder
