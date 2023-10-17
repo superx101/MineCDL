@@ -1,7 +1,7 @@
 module.exports = {
+  base: '/MineCDL/',
   title: 'MineCDL',
   themeConfig: {
-    base: '/MineCDL/',
     docsDir: 'docs',
     docsBranch: 'main',
     repo: 'superx101/MineCDL',
