@@ -14,12 +14,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Build
-        run: npm install && npm run docs:build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
+      - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
+        env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
+          TARGET_REPO: superx101/MineCDL
+          TARGET_BRANCH: master
+          BUILD_SCRIPT: yarn && yarn docs:build
+          BUILD_DIR: docs/.vuepress/dist
