@@ -6,11 +6,15 @@
     "build": "tsc",
     "test": "npx jest",
     "antlr4": "antlr4ts ./src/mcdl/antlr/Mcdl.g4 -o ./src/mcdl/antlr",
-    "fix": "npx eslint --fix src"
+    "fix": "npx eslint --fix src",
+    "docs": "vuepress dev docs --temp .temp",
+    "docs:build": "vuepress build docs"
   },
   "author": "superx101 (Github: superx101)",
   "license": "GPL-3.0",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "dependencies": {
     "antlr4ts": "^0.5.0-alpha.4"
   },
@@ -31,6 +35,7 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vuepress": "^1.9.10"
   }
 }

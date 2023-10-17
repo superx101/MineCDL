@@ -2,13 +2,7 @@
 
 MineCDL is a javascript/typescript library for custom command parsing or generating code for other platforms.
 
-You can quickly define some commands use MCDL (Mine Command Definition Language) as :
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-<script>
-
-</script>
+You can quickly define some commands use MCDL (MineCraft Command Definition Language) as :
 
 ```mcdl
 tp | teleport
@@ -68,11 +62,14 @@ Run
 npm install minecdl
 ``` 
 
-to install the library adn all its dependecies.
+to install the library and all its dependecies.
+
+## MCDL Syntax
+Refer to the [documentation](https://superx101.github.io/MineCDL/)
 
 ## Command Parser
 
-For instruction trees generated from MCDL, you can choose to parse them using the built-in instruction parser in this library, as demonstrated in the following code:
+For command trees generated from MCDL, you can choose to parse them using the built-in command parser in this library, as demonstrated in the following code:
 
 > For the complete example, please refer to [example.ts](./example/parser/example.ts) or [example.js](./example/parser/example.js).
 

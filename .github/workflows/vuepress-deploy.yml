@@ -1,0 +1,19 @@
+name: Build and Deploy
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.WORKFLOW }}
+        TARGET_REPO: superx101/MineCDL
+        TARGET_BRANCH: main
+        BUILD_SCRIPT: yarn && yarn docs:build
+        BUILD_DIR: docs/.vuepress/dist

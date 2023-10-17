@@ -1,4 +1,5 @@
-node_modules
-dist
-.antlr
+node_modules/
+dist/
+.antlr/
+.temp/
 TODO.md

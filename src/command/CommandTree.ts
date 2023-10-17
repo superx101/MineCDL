@@ -117,8 +117,6 @@ export class CommandTree {
                 }
             }
             else if (node instanceof FunctionNode) {
-
-
                 // Update the depth value of the current branch
                 let fptr: NodePtr = node.parent;
                 let deepCount = 1;
