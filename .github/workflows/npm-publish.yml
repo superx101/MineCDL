@@ -20,9 +20,14 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: cp package.json ./dist/ 
-      - run: cd ./dist
-      - run: npm publish
+      - name: Publish
+        run: |
+          cp package.json ./dist
+          cp LICENSE ./dist
+          cp README.md ./dist
+          cd ./dist
+          sed -i 's/"main": ".*"/"main": "index.js"/' package.json
+          npm publish
 
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH}}

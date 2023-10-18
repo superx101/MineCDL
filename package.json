@@ -1,7 +1,7 @@
 {
   "name": "minecdl",
   "version": "1.0.2",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "npx jest",
@@ -12,9 +12,6 @@
   },
   "author": "superx101 (Github: superx101)",
   "license": "GPL-3.0",
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "antlr4ts": "^0.5.0-alpha.4"
   },
