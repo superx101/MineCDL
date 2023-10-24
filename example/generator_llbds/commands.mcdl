@@ -1,0 +1,39 @@
+test                            @(description="A example command")
+    player
+        <players>: Player
+            [pos]: BlockPos
+                f1()                  
+        [pos]
+            f2()
+    other | o                   @(name="other", enumOptions=1)
+        <number>: Int
+            (replace)
+                f3()
+            hollow
+                f4()
+        [block]: Block
+            [item]: Item
+                f5()
+    
+
+test2                           @(description="Test2 command")
+    <number>: Int
+        f1()
+
+
+# ambiguity command, Actor is considered a string type by LLBDS, program cannot recognize enumeration types
+"""
+ambiguity                       
+    <target1>: Actor
+        <target2>: Actor
+            f1()
+        [pos]: BlockPos
+            f2()
+    <pos>
+        f3()
+    random | r                  @(name="random") # this branch will never matched
+        f4()
+    up | down                   @(enumOptions=1)
+        [distance]: Int
+            f5()
+"""

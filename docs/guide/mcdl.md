@@ -176,6 +176,19 @@ If your definition is not legal, the parser will report an error.
 >         f2()
 > ```
 
+### Tags
+
+Tags are used to add some special information. For example, a label is used in the generator to specify additional parameters for a node.
+
+A label is represented by `@(content)`, where `content` is any character other than `( ) \r \n`.
+
+> Example
+> ```
+> cmd                @(any text)
+>     enum           @(name="en")
+>         f1()
+> ```
+
 ## Epilogue
 
 At this point, you have learned all the syntax of MCDL and can start using it.

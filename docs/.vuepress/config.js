@@ -17,7 +17,7 @@ module.exports = {
           { text: 'Guide', link: '/guide/mcdl' }
         ],
         sidebar: {
-          "/guide/": ["mcdl", "command_parser", "code_generator"]
+          "/guide/": ["mcdl", "command_parser", "generator", "generator_llbds"]
         },
       },
       '/zh/': {
@@ -29,7 +29,7 @@ module.exports = {
           { text: '指南', link: '/zh/guide/mcdl' }
         ],
         sidebar: {
-          "/zh/guide/": [ "mcdl", "command_parser", "code_generator"]
+          "/zh/guide/": ["mcdl", "command_parser", "generator", "generator_llbds"],
         }
       }
     }

@@ -107,9 +107,9 @@ export class ClassMaker {
      */
     protected getID(node: CommandNode): string {
         if ((node instanceof EnumNode) || (node instanceof RootNode))
-            return "enum_" + node.name + (node.isOptional ? "_optional" : "_mandatory");
+            return (node.isOptional ? "optional_" : "mandatory_") + node.name;
         else if (node instanceof VariableNode)
-            return "var_" + node.name + (node.isOptional ? "_optional" : "_mandatory");
+            return (node.isOptional ? "optional_" : "mandatory_") + "var_" + node.name;
         else
             return (<FunctionNode>node).name;
     }
@@ -201,7 +201,7 @@ export class ClassMaker {
                 nameSet.add(name);
             });
 
-            // command.overload(name,type[,enumName,identifier,enumOptions])
+            // command.overload([])
             this._registerContents.overload.line(`command.overload(${JSON.stringify(params).replace(/,/g, ", ")});`);
         });
     }
