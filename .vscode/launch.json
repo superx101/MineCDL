@@ -1,39 +1,39 @@
-// {
-//     "version": "0.2.0",
-//     "configurations": [
-//         {
-//             "name": "ts-node",
-//             "type": "node",
-//             "request": "launch",
-//             "args": [
-//                 "${workspaceFolder}/src/index.ts"
-//             ],
-//             "runtimeArgs": [
-//                 "-r",
-//                 "ts-node/register"
-//             ],
-//             "cwd": "${workspaceFolder}",
-//             "internalConsoleOptions": "openOnSessionStart"
-//         }
-//     ]
-// }
-
 {
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch via NPM",
+            "name": "ts-node",
+            "type": "node",
             "request": "launch",
+            "args": [
+                "${file}"
+            ],
             "runtimeArgs": [
-                "run-script",
-                "docs"
+                "-r",
+                "ts-node/register"
             ],
-            "runtimeExecutable": "npm",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ]
-  }
+}
+
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Launch via NPM",
+//             "request": "launch",
+//             "runtimeArgs": [
+//                 "run-script",
+//                 "docs"
+//             ],
+//             "runtimeExecutable": "npm",
+//             "skipFiles": [
+//                 "<node_internals>/**"
+//             ],
+//             "type": "node"
+//         }
+//     ]
+//   }
   
