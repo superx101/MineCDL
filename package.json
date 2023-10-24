@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "node build.js",
     "test": "npx jest",
     "antlr4": "antlr4ts ./src/mcdl/antlr/Mcdl.g4 -o ./src/mcdl/antlr",
     "fix": "npx eslint --fix src",

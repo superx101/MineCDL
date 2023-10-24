@@ -22,11 +22,7 @@ jobs:
       - run: npm run build
       - name: Publish
         run: |
-          cp package.json ./dist
-          cp LICENSE ./dist
-          cp README.md ./dist
           cd ./dist
-          sed -i 's/"main": ".*"/"main": "index.js"/' package.json
           npm publish
 
         env:
