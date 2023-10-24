@@ -7,6 +7,8 @@ import { MandVaribaleDefContext } from "./McdlParser";
 import { OptVariableDefContext } from "./McdlParser";
 import { IntCountContext } from "./McdlParser";
 import { MultiCountContext } from "./McdlParser";
+import { ImplicitTypeDefContext } from "./McdlParser";
+import { ExplicitTypeDefContext } from "./McdlParser";
 import { RootDeclareContext } from "./McdlParser";
 import { EnumDeclareContext } from "./McdlParser";
 import { VariableDeclareContext } from "./McdlParser";
@@ -15,13 +17,12 @@ import { ExplicitVariableDefContext } from "./McdlParser";
 import { ImplicitVariableDefContext } from "./McdlParser";
 import { MandEnumDefContext } from "./McdlParser";
 import { OptEnumDefContext } from "./McdlParser";
-import { ImplicitTypeDefContext } from "./McdlParser";
-import { ExplicitTypeDefContext } from "./McdlParser";
 import { IndentContext } from "./McdlParser";
 import { FuncNameContext } from "./McdlParser";
 import { EnumNameContext } from "./McdlParser";
 import { VarNameContext } from "./McdlParser";
 import { TypeNameContext } from "./McdlParser";
+import { TagContext } from "./McdlParser";
 import { ProgramContext } from "./McdlParser";
 import { StatementContext } from "./McdlParser";
 import { EnumerationContext } from "./McdlParser";
@@ -87,6 +88,32 @@ export interface McdlListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitMultiCount?: (ctx: MultiCountContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `ImplicitTypeDef`
+	 * labeled alternative in `McdlParser.type`.
+	 * @param ctx the parse tree
+	 */
+	enterImplicitTypeDef?: (ctx: ImplicitTypeDefContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ImplicitTypeDef`
+	 * labeled alternative in `McdlParser.type`.
+	 * @param ctx the parse tree
+	 */
+	exitImplicitTypeDef?: (ctx: ImplicitTypeDefContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `ExplicitTypeDef`
+	 * labeled alternative in `McdlParser.type`.
+	 * @param ctx the parse tree
+	 */
+	enterExplicitTypeDef?: (ctx: ExplicitTypeDefContext) => void;
+	/**
+	 * Exit a parse tree produced by the `ExplicitTypeDef`
+	 * labeled alternative in `McdlParser.type`.
+	 * @param ctx the parse tree
+	 */
+	exitExplicitTypeDef?: (ctx: ExplicitTypeDefContext) => void;
 
 	/**
 	 * Enter a parse tree produced by the `RootDeclare`
@@ -193,32 +220,6 @@ export interface McdlListener extends ParseTreeListener {
 	exitOptEnumDef?: (ctx: OptEnumDefContext) => void;
 
 	/**
-	 * Enter a parse tree produced by the `ImplicitTypeDef`
-	 * labeled alternative in `McdlParser.type`.
-	 * @param ctx the parse tree
-	 */
-	enterImplicitTypeDef?: (ctx: ImplicitTypeDefContext) => void;
-	/**
-	 * Exit a parse tree produced by the `ImplicitTypeDef`
-	 * labeled alternative in `McdlParser.type`.
-	 * @param ctx the parse tree
-	 */
-	exitImplicitTypeDef?: (ctx: ImplicitTypeDefContext) => void;
-
-	/**
-	 * Enter a parse tree produced by the `ExplicitTypeDef`
-	 * labeled alternative in `McdlParser.type`.
-	 * @param ctx the parse tree
-	 */
-	enterExplicitTypeDef?: (ctx: ExplicitTypeDefContext) => void;
-	/**
-	 * Exit a parse tree produced by the `ExplicitTypeDef`
-	 * labeled alternative in `McdlParser.type`.
-	 * @param ctx the parse tree
-	 */
-	exitExplicitTypeDef?: (ctx: ExplicitTypeDefContext) => void;
-
-	/**
 	 * Enter a parse tree produced by `McdlParser.indent`.
 	 * @param ctx the parse tree
 	 */
@@ -272,6 +273,17 @@ export interface McdlListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitTypeName?: (ctx: TypeNameContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `McdlParser.tag`.
+	 * @param ctx the parse tree
+	 */
+	enterTag?: (ctx: TagContext) => void;
+	/**
+	 * Exit a parse tree produced by `McdlParser.tag`.
+	 * @param ctx the parse tree
+	 */
+	exitTag?: (ctx: TagContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `McdlParser.program`.

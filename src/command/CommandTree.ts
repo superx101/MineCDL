@@ -12,12 +12,17 @@ export class CommandNode {
     public parent: NodePtr = null;
     public layer: number = -1;
     public depth: number = 0;
+    public tag: string = "";
     public text: string;
     public isOptional: boolean;
 
-    constructor(text: string = "", isOptinal: boolean = false) {
+    constructor(text: string = "", isOptional: boolean = false) {
         this.text = text;
-        this.isOptional = isOptinal;
+        this.isOptional = isOptional;
+    }
+
+    public hasTag() {
+        return !(this.tag === "");
     }
 
     public addChild(child: CommandNode): void {
@@ -25,24 +30,48 @@ export class CommandNode {
         this.childs.push(child);
     }
 
+    public addTagString(str: string): string {
+        if (this.hasTag())
+            return str += `    @(${this.tag})`;
+        return str;
+    }
+
+    /** @override */
     public toString(): string {
         return "";
     }
 }
 
 export class EnumNode extends CommandNode {
-    public enums: string[];
+    private _enums: string[] = [];
+    public name: string = "";
+    public type: string = "";
+
+    public get enums() {
+        return this._enums;
+    }
+
+    public set enums(enums: string[]) {
+        this._enums = enums;
+        this.name = enums.join("_");
+
+        const arr = enums.map((str)=> `"${str}"`);
+        if (this.isOptional)
+            arr.push("null");
+        this.type = arr.join(" | ");
+    }
 
     constructor(text: string, enums: string[], isOptional: boolean = false) {
         super(text, isOptional);
         this.enums = enums;
     }
 
+    /** @override */
     public toString(): string {
         if (this.isOptional)
-            return `(${this.enums.join("|")})`;
+            return `(${this._enums.join(" | ")})`;
         else
-            return this.enums.join("|");
+            return this._enums.join(" | ");
     }
 }
 
@@ -65,6 +94,7 @@ export class VariableNode extends CommandNode {
         this.parmCount = parmCount;
     }
 
+    /** @override */
     public toString(): string {
         let name;
         if (this.isOptional)
@@ -74,29 +104,51 @@ export class VariableNode extends CommandNode {
         let countStr: string = "...";
         if (this.parmCount > 0)
             countStr = this.parmCount.toString();
-        return `${name}:${this.type}<<${countStr}`;
+        return `${name}: ${this.type} << ${countStr}`;
     }
 }
 
 export class FunctionNode extends CommandNode {
     public name: string = "";
 
-    constructor(name: string) {
+    constructor(name: string, tag: string = "") {
         super(name, false);
         this.name = name;
     }
 
+    /** @override */
     public toString(): string {
-        return `${this.name}()`;
+        return this.addTagString(`${this.name}()`);
+    }
+
+    /**
+     * get parameterChain without FunctionNode and RootNode
+     */
+    public parameterChain(): (EnumNode | VariableNode)[] {
+        let ptr: NodePtr = this.parent;
+        const arr: (EnumNode | VariableNode)[] = [];
+        while (ptr) {
+            if (ptr instanceof RootNode)
+                break;
+            arr.push(<EnumNode | VariableNode>ptr);
+            ptr = ptr.parent;
+        }
+        return arr.reverse();
     }
 }
-
 export class CommandTree {
     private _mode: CommandTreeMode;
     public fnMap: Map<string, FunctionNode> = new Map();
     public varTypeSet: Set<string> = new Set();
+    public variableNodes: VariableNode[] = [];
+    public enumNodes: EnumNode[] = [];
+    public fnNodes: FunctionNode[] = [];
     public fnNameSet: Set<string>;
     public root: RootNode;
+
+    public get mode() {
+        return this._mode;
+    }
 
     constructor(root: RootNode, mode: CommandTreeMode = CommandTreeMode.LOOSE) {
         this.root = root;
@@ -115,8 +167,11 @@ export class CommandTree {
                 else {
                     implicitVarArr.push(node);
                 }
+                this.variableNodes.push(node);
             }
             else if (node instanceof FunctionNode) {
+                this.fnNodes.push(node);
+
                 // Update the depth value of the current branch
                 let fptr: NodePtr = node.parent;
                 let deepCount = 1;
@@ -125,6 +180,9 @@ export class CommandTree {
                         ++deepCount;
                         fptr = fptr!.parent;
                 }
+            }
+            else if ((node instanceof EnumNode) && !(node instanceof RootNode)) {
+                this.enumNodes.push(node);
             }
         });
 
@@ -233,16 +291,32 @@ export class CommandTree {
         return texts.reverse().join(" ");
     }
 
-    public toTreeString(layerCount: number = 4): string {
+    public toTreeString(layerCount: number = 4, displayTag: boolean = false): string {
+        const lines: string[] = [];
         const spaceStr = " ".repeat(layerCount);
-        let output = "";
+        let longestLen = 0;
         this.traverse(this.root, (ptr)=>{
-            if (ptr instanceof FunctionNode) return;
-            output += spaceStr.repeat(ptr!.layer) + ptr!.toString() + "\n";
+            // if (ptr instanceof FunctionNode) return;
+            const line = spaceStr.repeat(ptr!.layer) + ptr!.toString();
+            if (line.length > longestLen)
+                longestLen = line.length;
+            lines.push(line);
         });
-        return output;
+        // add tag
+        if (displayTag) {
+            let index = 0;
+            this.traverse(this.root, (ptr)=>{
+                if (ptr!.hasTag()) {
+                    lines[index] += " ".repeat(longestLen - lines[index].length);
+                    lines[index] = ptr!.addTagString(lines[index]);
+                }
+                ++index;
+            });
+        }
+        return lines.join("\n");
     }
 
+    /** @override */
     public toString(): string {
         let output = "";
         this.traverse(this.root, (ptr)=>{
@@ -254,4 +328,8 @@ export class CommandTree {
 
 export abstract class CommandTreeBuilder {
     public abstract build(sourse: any, mode: CommandTreeMode, error?: (e: Error)=>void): CommandTree[] | null;
+}
+
+export abstract class CodeGenerator {
+    public abstract generate(trees: CommandTree[], distDir: string, ...args: any[]): void;
 }

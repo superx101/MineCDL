@@ -32,43 +32,46 @@ export class McdlParser extends Parser {
 	public static readonly T__3 = 4;
 	public static readonly INTEGER = 5;
 	public static readonly NAME = 6;
-	public static readonly OPEN_ANGLE = 7;
-	public static readonly CLOSE_ANGLE = 8;
-	public static readonly OPEN_SQUARE = 9;
-	public static readonly CLOSE_SQUARE = 10;
-	public static readonly OPEN_PAREN = 11;
-	public static readonly CLOSE_PAREN = 12;
-	public static readonly INDENT = 13;
-	public static readonly NEWLINE = 14;
-	public static readonly COMMENT_SINGLE = 15;
-	public static readonly COMMENT_MULTI = 16;
-	public static readonly SW = 17;
+	public static readonly TAGTEXT = 7;
+	public static readonly STRING = 8;
+	public static readonly OPEN_ANGLE = 9;
+	public static readonly CLOSE_ANGLE = 10;
+	public static readonly OPEN_SQUARE = 11;
+	public static readonly CLOSE_SQUARE = 12;
+	public static readonly OPEN_PAREN = 13;
+	public static readonly CLOSE_PAREN = 14;
+	public static readonly INDENT = 15;
+	public static readonly NEWLINE = 16;
+	public static readonly COMMENT_SINGLE = 17;
+	public static readonly COMMENT_MULTI = 18;
+	public static readonly SW = 19;
 	public static readonly RULE_indent = 0;
 	public static readonly RULE_funcName = 1;
 	public static readonly RULE_enumName = 2;
 	public static readonly RULE_varName = 3;
 	public static readonly RULE_typeName = 4;
-	public static readonly RULE_program = 5;
-	public static readonly RULE_statement = 6;
-	public static readonly RULE_enumeration = 7;
-	public static readonly RULE_variable = 8;
-	public static readonly RULE_varTerm = 9;
-	public static readonly RULE_type = 10;
-	public static readonly RULE_parameterCount = 11;
+	public static readonly RULE_tag = 5;
+	public static readonly RULE_program = 6;
+	public static readonly RULE_statement = 7;
+	public static readonly RULE_enumeration = 8;
+	public static readonly RULE_variable = 9;
+	public static readonly RULE_varTerm = 10;
+	public static readonly RULE_type = 11;
+	public static readonly RULE_parameterCount = 12;
 	// tslint:disable:no-trailing-whitespace
 	public static readonly ruleNames: string[] = [
-		"indent", "funcName", "enumName", "varName", "typeName", "program", "statement", 
-		"enumeration", "variable", "varTerm", "type", "parameterCount",
+		"indent", "funcName", "enumName", "varName", "typeName", "tag", "program", 
+		"statement", "enumeration", "variable", "varTerm", "type", "parameterCount",
 	];
 
 	private static readonly _LITERAL_NAMES: Array<string | undefined> = [
-		undefined, "'|'", "':'", "'<<'", "'...'", undefined, undefined, "'<'", 
-		"'>'", "'['", "']'", "'('", "')'",
+		undefined, "'|'", "':'", "'<<'", "'...'", undefined, undefined, undefined, 
+		undefined, "'<'", "'>'", "'['", "']'", "'('", "')'",
 	];
 	private static readonly _SYMBOLIC_NAMES: Array<string | undefined> = [
 		undefined, undefined, undefined, undefined, undefined, "INTEGER", "NAME", 
-		"OPEN_ANGLE", "CLOSE_ANGLE", "OPEN_SQUARE", "CLOSE_SQUARE", "OPEN_PAREN", 
-		"CLOSE_PAREN", "INDENT", "NEWLINE", "COMMENT_SINGLE", "COMMENT_MULTI", 
+		"TAGTEXT", "STRING", "OPEN_ANGLE", "CLOSE_ANGLE", "OPEN_SQUARE", "CLOSE_SQUARE", 
+		"OPEN_PAREN", "CLOSE_PAREN", "INDENT", "NEWLINE", "COMMENT_SINGLE", "COMMENT_MULTI", 
 		"SW",
 	];
 	public static readonly VOCABULARY: Vocabulary = new VocabularyImpl(McdlParser._LITERAL_NAMES, McdlParser._SYMBOLIC_NAMES, []);
@@ -104,7 +107,7 @@ export class McdlParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 24;
+			this.state = 26;
 			this.match(McdlParser.INDENT);
 			}
 		}
@@ -129,7 +132,7 @@ export class McdlParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 26;
+			this.state = 28;
 			this.match(McdlParser.NAME);
 			}
 		}
@@ -154,7 +157,7 @@ export class McdlParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 28;
+			this.state = 30;
 			this.match(McdlParser.NAME);
 			}
 		}
@@ -179,7 +182,7 @@ export class McdlParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 30;
+			this.state = 32;
 			this.match(McdlParser.NAME);
 			}
 		}
@@ -204,8 +207,33 @@ export class McdlParser extends Parser {
 		try {
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 32;
+			this.state = 34;
 			this.match(McdlParser.NAME);
+			}
+		}
+		catch (re) {
+			if (re instanceof RecognitionException) {
+				_localctx.exception = re;
+				this._errHandler.reportError(this, re);
+				this._errHandler.recover(this, re);
+			} else {
+				throw re;
+			}
+		}
+		finally {
+			this.exitRule();
+		}
+		return _localctx;
+	}
+	// @RuleVersion(0)
+	public tag(): TagContext {
+		let _localctx: TagContext = new TagContext(this._ctx, this.state);
+		this.enterRule(_localctx, 10, McdlParser.RULE_tag);
+		try {
+			this.enterOuterAlt(_localctx, 1);
+			{
+			this.state = 36;
+			this.match(McdlParser.TAGTEXT);
 			}
 		}
 		catch (re) {
@@ -225,27 +253,27 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public program(): ProgramContext {
 		let _localctx: ProgramContext = new ProgramContext(this._ctx, this.state);
-		this.enterRule(_localctx, 10, McdlParser.RULE_program);
+		this.enterRule(_localctx, 12, McdlParser.RULE_program);
 		let _la: number;
 		try {
 			let _alt: number;
 			this.enterOuterAlt(_localctx, 1);
 			{
-			this.state = 37;
+			this.state = 41;
 			this._errHandler.sync(this);
 			_la = this._input.LA(1);
 			while (_la === McdlParser.NEWLINE) {
 				{
 				{
-				this.state = 34;
+				this.state = 38;
 				this.match(McdlParser.NEWLINE);
 				}
 				}
-				this.state = 39;
+				this.state = 43;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 			}
-			this.state = 47;
+			this.state = 60;
 			this._errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -253,23 +281,47 @@ export class McdlParser extends Parser {
 				case 1:
 					{
 					{
-					this.state = 40;
-					this.statement();
 					this.state = 44;
+					this.statement();
+					this.state = 52;
 					this._errHandler.sync(this);
-					_alt = this.interpreter.adaptivePredict(this._input, 1, this._ctx);
+					switch ( this.interpreter.adaptivePredict(this._input, 2, this._ctx) ) {
+					case 1:
+						{
+						this.state = 48;
+						this._errHandler.sync(this);
+						_la = this._input.LA(1);
+						while (_la === McdlParser.INDENT) {
+							{
+							{
+							this.state = 45;
+							this.match(McdlParser.INDENT);
+							}
+							}
+							this.state = 50;
+							this._errHandler.sync(this);
+							_la = this._input.LA(1);
+						}
+						this.state = 51;
+						this.tag();
+						}
+						break;
+					}
+					this.state = 57;
+					this._errHandler.sync(this);
+					_alt = this.interpreter.adaptivePredict(this._input, 3, this._ctx);
 					while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER) {
 						if (_alt === 1) {
 							{
 							{
-							this.state = 41;
+							this.state = 54;
 							this.match(McdlParser.NEWLINE);
 							}
 							}
 						}
-						this.state = 46;
+						this.state = 59;
 						this._errHandler.sync(this);
-						_alt = this.interpreter.adaptivePredict(this._input, 1, this._ctx);
+						_alt = this.interpreter.adaptivePredict(this._input, 3, this._ctx);
 					}
 					}
 					}
@@ -277,22 +329,22 @@ export class McdlParser extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				this.state = 49;
+				this.state = 62;
 				this._errHandler.sync(this);
-				_alt = this.interpreter.adaptivePredict(this._input, 2, this._ctx);
+				_alt = this.interpreter.adaptivePredict(this._input, 4, this._ctx);
 			} while (_alt !== 2 && _alt !== ATN.INVALID_ALT_NUMBER);
-			this.state = 58;
+			this.state = 71;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 4, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 6, this._ctx) ) {
 			case 1:
 				{
-				this.state = 54;
+				this.state = 67;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				while (_la === McdlParser.INDENT || _la === McdlParser.NEWLINE) {
 					{
 					{
-					this.state = 51;
+					this.state = 64;
 					_la = this._input.LA(1);
 					if (!(_la === McdlParser.INDENT || _la === McdlParser.NEWLINE)) {
 					this._errHandler.recoverInline(this);
@@ -306,11 +358,11 @@ export class McdlParser extends Parser {
 					}
 					}
 					}
-					this.state = 56;
+					this.state = 69;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				}
-				this.state = 57;
+				this.state = 70;
 				this.match(McdlParser.EOF);
 				}
 				break;
@@ -334,17 +386,17 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public statement(): StatementContext {
 		let _localctx: StatementContext = new StatementContext(this._ctx, this.state);
-		this.enterRule(_localctx, 12, McdlParser.RULE_statement);
+		this.enterRule(_localctx, 14, McdlParser.RULE_statement);
 		let _la: number;
 		try {
-			this.state = 84;
+			this.state = 97;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 8, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 10, this._ctx) ) {
 			case 1:
 				_localctx = new RootDeclareContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 60;
+				this.state = 73;
 				this.enumeration();
 				}
 				break;
@@ -353,21 +405,21 @@ export class McdlParser extends Parser {
 				_localctx = new EnumDeclareContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 62;
+				this.state = 75;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				do {
 					{
 					{
-					this.state = 61;
+					this.state = 74;
 					this.indent();
 					}
 					}
-					this.state = 64;
+					this.state = 77;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				} while (_la === McdlParser.INDENT);
-				this.state = 66;
+				this.state = 79;
 				this.enumeration();
 				}
 				break;
@@ -376,21 +428,21 @@ export class McdlParser extends Parser {
 				_localctx = new VariableDeclareContext(_localctx);
 				this.enterOuterAlt(_localctx, 3);
 				{
-				this.state = 69;
+				this.state = 82;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				do {
 					{
 					{
-					this.state = 68;
+					this.state = 81;
 					this.indent();
 					}
 					}
-					this.state = 71;
+					this.state = 84;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				} while (_la === McdlParser.INDENT);
-				this.state = 73;
+				this.state = 86;
 				this.variable();
 				}
 				break;
@@ -399,25 +451,25 @@ export class McdlParser extends Parser {
 				_localctx = new FunctionDeclareContext(_localctx);
 				this.enterOuterAlt(_localctx, 4);
 				{
-				this.state = 76;
+				this.state = 89;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				do {
 					{
 					{
-					this.state = 75;
+					this.state = 88;
 					this.indent();
 					}
 					}
-					this.state = 78;
+					this.state = 91;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				} while (_la === McdlParser.INDENT);
-				this.state = 80;
+				this.state = 93;
 				this.funcName();
-				this.state = 81;
+				this.state = 94;
 				this.match(McdlParser.OPEN_PAREN);
-				this.state = 82;
+				this.state = 95;
 				this.match(McdlParser.CLOSE_PAREN);
 				}
 				break;
@@ -440,31 +492,31 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public enumeration(): EnumerationContext {
 		let _localctx: EnumerationContext = new EnumerationContext(this._ctx, this.state);
-		this.enterRule(_localctx, 14, McdlParser.RULE_enumeration);
+		this.enterRule(_localctx, 16, McdlParser.RULE_enumeration);
 		let _la: number;
 		try {
-			this.state = 105;
+			this.state = 118;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case McdlParser.NAME:
 				_localctx = new MandEnumDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 86;
+				this.state = 99;
 				this.enumName();
-				this.state = 91;
+				this.state = 104;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				while (_la === McdlParser.T__0) {
 					{
 					{
-					this.state = 87;
+					this.state = 100;
 					this.match(McdlParser.T__0);
-					this.state = 88;
+					this.state = 101;
 					this.enumName();
 					}
 					}
-					this.state = 93;
+					this.state = 106;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				}
@@ -474,27 +526,27 @@ export class McdlParser extends Parser {
 				_localctx = new OptEnumDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 94;
+				this.state = 107;
 				this.match(McdlParser.OPEN_PAREN);
-				this.state = 95;
+				this.state = 108;
 				this.enumName();
-				this.state = 100;
+				this.state = 113;
 				this._errHandler.sync(this);
 				_la = this._input.LA(1);
 				while (_la === McdlParser.T__0) {
 					{
 					{
-					this.state = 96;
+					this.state = 109;
 					this.match(McdlParser.T__0);
-					this.state = 97;
+					this.state = 110;
 					this.enumName();
 					}
 					}
-					this.state = 102;
+					this.state = 115;
 					this._errHandler.sync(this);
 					_la = this._input.LA(1);
 				}
-				this.state = 103;
+				this.state = 116;
 				this.match(McdlParser.CLOSE_PAREN);
 				}
 				break;
@@ -519,20 +571,20 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public variable(): VariableContext {
 		let _localctx: VariableContext = new VariableContext(this._ctx, this.state);
-		this.enterRule(_localctx, 16, McdlParser.RULE_variable);
+		this.enterRule(_localctx, 18, McdlParser.RULE_variable);
 		try {
-			this.state = 112;
+			this.state = 125;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 12, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 14, this._ctx) ) {
 			case 1:
 				_localctx = new ExplicitVariableDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 107;
+				this.state = 120;
 				this.varTerm();
-				this.state = 108;
+				this.state = 121;
 				this.match(McdlParser.T__1);
-				this.state = 109;
+				this.state = 122;
 				this.type();
 				}
 				break;
@@ -541,7 +593,7 @@ export class McdlParser extends Parser {
 				_localctx = new ImplicitVariableDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 111;
+				this.state = 124;
 				this.varTerm();
 				}
 				break;
@@ -564,20 +616,20 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public varTerm(): VarTermContext {
 		let _localctx: VarTermContext = new VarTermContext(this._ctx, this.state);
-		this.enterRule(_localctx, 18, McdlParser.RULE_varTerm);
+		this.enterRule(_localctx, 20, McdlParser.RULE_varTerm);
 		try {
-			this.state = 122;
+			this.state = 135;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case McdlParser.OPEN_ANGLE:
 				_localctx = new MandVaribaleDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 114;
+				this.state = 127;
 				this.match(McdlParser.OPEN_ANGLE);
-				this.state = 115;
+				this.state = 128;
 				this.varName();
-				this.state = 116;
+				this.state = 129;
 				this.match(McdlParser.CLOSE_ANGLE);
 				}
 				break;
@@ -585,11 +637,11 @@ export class McdlParser extends Parser {
 				_localctx = new OptVariableDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 118;
+				this.state = 131;
 				this.match(McdlParser.OPEN_SQUARE);
-				this.state = 119;
+				this.state = 132;
 				this.varName();
-				this.state = 120;
+				this.state = 133;
 				this.match(McdlParser.CLOSE_SQUARE);
 				}
 				break;
@@ -614,16 +666,16 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public type(): TypeContext {
 		let _localctx: TypeContext = new TypeContext(this._ctx, this.state);
-		this.enterRule(_localctx, 20, McdlParser.RULE_type);
+		this.enterRule(_localctx, 22, McdlParser.RULE_type);
 		try {
-			this.state = 129;
+			this.state = 142;
 			this._errHandler.sync(this);
-			switch ( this.interpreter.adaptivePredict(this._input, 14, this._ctx) ) {
+			switch ( this.interpreter.adaptivePredict(this._input, 16, this._ctx) ) {
 			case 1:
 				_localctx = new ImplicitTypeDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 124;
+				this.state = 137;
 				this.typeName();
 				}
 				break;
@@ -632,11 +684,11 @@ export class McdlParser extends Parser {
 				_localctx = new ExplicitTypeDefContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 125;
+				this.state = 138;
 				this.typeName();
-				this.state = 126;
+				this.state = 139;
 				this.match(McdlParser.T__2);
-				this.state = 127;
+				this.state = 140;
 				this.parameterCount();
 				}
 				break;
@@ -659,16 +711,16 @@ export class McdlParser extends Parser {
 	// @RuleVersion(0)
 	public parameterCount(): ParameterCountContext {
 		let _localctx: ParameterCountContext = new ParameterCountContext(this._ctx, this.state);
-		this.enterRule(_localctx, 22, McdlParser.RULE_parameterCount);
+		this.enterRule(_localctx, 24, McdlParser.RULE_parameterCount);
 		try {
-			this.state = 133;
+			this.state = 146;
 			this._errHandler.sync(this);
 			switch (this._input.LA(1)) {
 			case McdlParser.INTEGER:
 				_localctx = new IntCountContext(_localctx);
 				this.enterOuterAlt(_localctx, 1);
 				{
-				this.state = 131;
+				this.state = 144;
 				this.match(McdlParser.INTEGER);
 				}
 				break;
@@ -676,7 +728,7 @@ export class McdlParser extends Parser {
 				_localctx = new MultiCountContext(_localctx);
 				this.enterOuterAlt(_localctx, 2);
 				{
-				this.state = 132;
+				this.state = 145;
 				this.match(McdlParser.T__3);
 				}
 				break;
@@ -700,60 +752,65 @@ export class McdlParser extends Parser {
 	}
 
 	public static readonly _serializedATN: string =
-		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\x13\x8A\x04\x02" +
+		"\x03\uC91D\uCABA\u058D\uAFBA\u4F53\u0607\uEA8B\uC241\x03\x15\x97\x04\x02" +
 		"\t\x02\x04\x03\t\x03\x04\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07" +
-		"\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r\x03" +
-		"\x02\x03\x02\x03\x03\x03\x03\x03\x04\x03\x04\x03\x05\x03\x05\x03\x06\x03" +
-		"\x06\x03\x07\x07\x07&\n\x07\f\x07\x0E\x07)\v\x07\x03\x07\x03\x07\x07\x07" +
-		"-\n\x07\f\x07\x0E\x070\v\x07\x06\x072\n\x07\r\x07\x0E\x073\x03\x07\x07" +
-		"\x077\n\x07\f\x07\x0E\x07:\v\x07\x03\x07\x05\x07=\n\x07\x03\b\x03\b\x06" +
-		"\bA\n\b\r\b\x0E\bB\x03\b\x03\b\x03\b\x06\bH\n\b\r\b\x0E\bI\x03\b\x03\b" +
-		"\x03\b\x06\bO\n\b\r\b\x0E\bP\x03\b\x03\b\x03\b\x03\b\x05\bW\n\b\x03\t" +
-		"\x03\t\x03\t\x07\t\\\n\t\f\t\x0E\t_\v\t\x03\t\x03\t\x03\t\x03\t\x07\t" +
-		"e\n\t\f\t\x0E\th\v\t\x03\t\x03\t\x05\tl\n\t\x03\n\x03\n\x03\n\x03\n\x03" +
-		"\n\x05\ns\n\n\x03\v\x03\v\x03\v\x03\v\x03\v\x03\v\x03\v\x03\v\x05\v}\n" +
-		"\v\x03\f\x03\f\x03\f\x03\f\x03\f\x05\f\x84\n\f\x03\r\x03\r\x05\r\x88\n" +
-		"\r\x03\r\x02\x02\x02\x0E\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02\x0E" +
-		"\x02\x10\x02\x12\x02\x14\x02\x16\x02\x18\x02\x02\x03\x03\x02\x0F\x10\x02" +
-		"\x8F\x02\x1A\x03\x02\x02\x02\x04\x1C\x03\x02\x02\x02\x06\x1E\x03\x02\x02" +
-		"\x02\b \x03\x02\x02\x02\n\"\x03\x02\x02\x02\f\'\x03\x02\x02\x02\x0EV\x03" +
-		"\x02\x02\x02\x10k\x03\x02\x02\x02\x12r\x03\x02\x02\x02\x14|\x03\x02\x02" +
-		"\x02\x16\x83\x03\x02\x02\x02\x18\x87\x03\x02\x02\x02\x1A\x1B\x07\x0F\x02" +
-		"\x02\x1B\x03\x03\x02\x02\x02\x1C\x1D\x07\b\x02\x02\x1D\x05\x03\x02\x02" +
-		"\x02\x1E\x1F\x07\b\x02\x02\x1F\x07\x03\x02\x02\x02 !\x07\b\x02\x02!\t" +
-		"\x03\x02\x02\x02\"#\x07\b\x02\x02#\v\x03\x02\x02\x02$&\x07\x10\x02\x02" +
-		"%$\x03\x02\x02\x02&)\x03\x02\x02\x02\'%\x03\x02\x02\x02\'(\x03\x02\x02" +
-		"\x02(1\x03\x02\x02\x02)\'\x03\x02\x02\x02*.\x05\x0E\b\x02+-\x07\x10\x02" +
-		"\x02,+\x03\x02\x02\x02-0\x03\x02\x02\x02.,\x03\x02\x02\x02./\x03\x02\x02" +
-		"\x02/2\x03\x02\x02\x020.\x03\x02\x02\x021*\x03\x02\x02\x0223\x03\x02\x02" +
-		"\x0231\x03\x02\x02\x0234\x03\x02\x02\x024<\x03\x02\x02\x0257\t\x02\x02" +
-		"\x0265\x03\x02\x02\x027:\x03\x02\x02\x0286\x03\x02\x02\x0289\x03\x02\x02" +
-		"\x029;\x03\x02\x02\x02:8\x03\x02\x02\x02;=\x07\x02\x02\x03<8\x03\x02\x02" +
-		"\x02<=\x03\x02\x02\x02=\r\x03\x02\x02\x02>W\x05\x10\t\x02?A\x05\x02\x02" +
-		"\x02@?\x03\x02\x02\x02AB\x03\x02\x02\x02B@\x03\x02\x02\x02BC\x03\x02\x02" +
-		"\x02CD\x03\x02\x02\x02DE\x05\x10\t\x02EW\x03\x02\x02\x02FH\x05\x02\x02" +
-		"\x02GF\x03\x02\x02\x02HI\x03\x02\x02\x02IG\x03\x02\x02\x02IJ\x03\x02\x02" +
-		"\x02JK\x03\x02\x02\x02KL\x05\x12\n\x02LW\x03\x02\x02\x02MO\x05\x02\x02" +
-		"\x02NM\x03\x02\x02\x02OP\x03\x02\x02\x02PN\x03\x02\x02\x02PQ\x03\x02\x02" +
-		"\x02QR\x03\x02\x02\x02RS\x05\x04\x03\x02ST\x07\r\x02\x02TU\x07\x0E\x02" +
-		"\x02UW\x03\x02\x02\x02V>\x03\x02\x02\x02V@\x03\x02\x02\x02VG\x03\x02\x02" +
-		"\x02VN\x03\x02\x02\x02W\x0F\x03\x02\x02\x02X]\x05\x06\x04\x02YZ\x07\x03" +
-		"\x02\x02Z\\\x05\x06\x04\x02[Y\x03\x02\x02\x02\\_\x03\x02\x02\x02][\x03" +
-		"\x02\x02\x02]^\x03\x02\x02\x02^l\x03\x02\x02\x02_]\x03\x02\x02\x02`a\x07" +
-		"\r\x02\x02af\x05\x06\x04\x02bc\x07\x03\x02\x02ce\x05\x06\x04\x02db\x03" +
-		"\x02\x02\x02eh\x03\x02\x02\x02fd\x03\x02\x02\x02fg\x03\x02\x02\x02gi\x03" +
-		"\x02\x02\x02hf\x03\x02\x02\x02ij\x07\x0E\x02\x02jl\x03\x02\x02\x02kX\x03" +
-		"\x02\x02\x02k`\x03\x02\x02\x02l\x11\x03\x02\x02\x02mn\x05\x14\v\x02no" +
-		"\x07\x04\x02\x02op\x05\x16\f\x02ps\x03\x02\x02\x02qs\x05\x14\v\x02rm\x03" +
-		"\x02\x02\x02rq\x03\x02\x02\x02s\x13\x03\x02\x02\x02tu\x07\t\x02\x02uv" +
-		"\x05\b\x05\x02vw\x07\n\x02\x02w}\x03\x02\x02\x02xy\x07\v\x02\x02yz\x05" +
-		"\b\x05\x02z{\x07\f\x02\x02{}\x03\x02\x02\x02|t\x03\x02\x02\x02|x\x03\x02" +
-		"\x02\x02}\x15\x03\x02\x02\x02~\x84\x05\n\x06\x02\x7F\x80\x05\n\x06\x02" +
-		"\x80\x81\x07\x05\x02\x02\x81\x82\x05\x18\r\x02\x82\x84\x03\x02\x02\x02" +
-		"\x83~\x03\x02\x02\x02\x83\x7F\x03\x02\x02\x02\x84\x17\x03\x02\x02\x02" +
-		"\x85\x88\x07\x07\x02\x02\x86\x88\x07\x06\x02\x02\x87\x85\x03\x02\x02\x02" +
-		"\x87\x86\x03\x02\x02\x02\x88\x19\x03\x02\x02\x02\x12\'.38<BIPV]fkr|\x83" +
-		"\x87";
+		"\t\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\v\t\v\x04\f\t\f\x04\r\t\r\x04" +
+		"\x0E\t\x0E\x03\x02\x03\x02\x03\x03\x03\x03\x03\x04\x03\x04\x03\x05\x03" +
+		"\x05\x03\x06\x03\x06\x03\x07\x03\x07\x03\b\x07\b*\n\b\f\b\x0E\b-\v\b\x03" +
+		"\b\x03\b\x07\b1\n\b\f\b\x0E\b4\v\b\x03\b\x05\b7\n\b\x03\b\x07\b:\n\b\f" +
+		"\b\x0E\b=\v\b\x06\b?\n\b\r\b\x0E\b@\x03\b\x07\bD\n\b\f\b\x0E\bG\v\b\x03" +
+		"\b\x05\bJ\n\b\x03\t\x03\t\x06\tN\n\t\r\t\x0E\tO\x03\t\x03\t\x03\t\x06" +
+		"\tU\n\t\r\t\x0E\tV\x03\t\x03\t\x03\t\x06\t\\\n\t\r\t\x0E\t]\x03\t\x03" +
+		"\t\x03\t\x03\t\x05\td\n\t\x03\n\x03\n\x03\n\x07\ni\n\n\f\n\x0E\nl\v\n" +
+		"\x03\n\x03\n\x03\n\x03\n\x07\nr\n\n\f\n\x0E\nu\v\n\x03\n\x03\n\x05\ny" +
+		"\n\n\x03\v\x03\v\x03\v\x03\v\x03\v\x05\v\x80\n\v\x03\f\x03\f\x03\f\x03" +
+		"\f\x03\f\x03\f\x03\f\x03\f\x05\f\x8A\n\f\x03\r\x03\r\x03\r\x03\r\x03\r" +
+		"\x05\r\x91\n\r\x03\x0E\x03\x0E\x05\x0E\x95\n\x0E\x03\x0E\x02\x02\x02\x0F" +
+		"\x02\x02\x04\x02\x06\x02\b\x02\n\x02\f\x02\x0E\x02\x10\x02\x12\x02\x14" +
+		"\x02\x16\x02\x18\x02\x1A\x02\x02\x03\x03\x02\x11\x12\x02\x9D\x02\x1C\x03" +
+		"\x02\x02\x02\x04\x1E\x03\x02\x02\x02\x06 \x03\x02\x02\x02\b\"\x03\x02" +
+		"\x02\x02\n$\x03\x02\x02\x02\f&\x03\x02\x02\x02\x0E+\x03\x02\x02\x02\x10" +
+		"c\x03\x02\x02\x02\x12x\x03\x02\x02\x02\x14\x7F\x03\x02\x02\x02\x16\x89" +
+		"\x03\x02\x02\x02\x18\x90\x03\x02\x02\x02\x1A\x94\x03\x02\x02\x02\x1C\x1D" +
+		"\x07\x11\x02\x02\x1D\x03\x03\x02\x02\x02\x1E\x1F\x07\b\x02\x02\x1F\x05" +
+		"\x03\x02\x02\x02 !\x07\b\x02\x02!\x07\x03\x02\x02\x02\"#\x07\b\x02\x02" +
+		"#\t\x03\x02\x02\x02$%\x07\b\x02\x02%\v\x03\x02\x02\x02&\'\x07\t\x02\x02" +
+		"\'\r\x03\x02\x02\x02(*\x07\x12\x02\x02)(\x03\x02\x02\x02*-\x03\x02\x02" +
+		"\x02+)\x03\x02\x02\x02+,\x03\x02\x02\x02,>\x03\x02\x02\x02-+\x03\x02\x02" +
+		"\x02.6\x05\x10\t\x02/1\x07\x11\x02\x020/\x03\x02\x02\x0214\x03\x02\x02" +
+		"\x0220\x03\x02\x02\x0223\x03\x02\x02\x0235\x03\x02\x02\x0242\x03\x02\x02" +
+		"\x0257\x05\f\x07\x0262\x03\x02\x02\x0267\x03\x02\x02\x027;\x03\x02\x02" +
+		"\x028:\x07\x12\x02\x0298\x03\x02\x02\x02:=\x03\x02\x02\x02;9\x03\x02\x02" +
+		"\x02;<\x03\x02\x02\x02<?\x03\x02\x02\x02=;\x03\x02\x02\x02>.\x03\x02\x02" +
+		"\x02?@\x03\x02\x02\x02@>\x03\x02\x02\x02@A\x03\x02\x02\x02AI\x03\x02\x02" +
+		"\x02BD\t\x02\x02\x02CB\x03\x02\x02\x02DG\x03\x02\x02\x02EC\x03\x02\x02" +
+		"\x02EF\x03\x02\x02\x02FH\x03\x02\x02\x02GE\x03\x02\x02\x02HJ\x07\x02\x02" +
+		"\x03IE\x03\x02\x02\x02IJ\x03\x02\x02\x02J\x0F\x03\x02\x02\x02Kd\x05\x12" +
+		"\n\x02LN\x05\x02\x02\x02ML\x03\x02\x02\x02NO\x03\x02\x02\x02OM\x03\x02" +
+		"\x02\x02OP\x03\x02\x02\x02PQ\x03\x02\x02\x02QR\x05\x12\n\x02Rd\x03\x02" +
+		"\x02\x02SU\x05\x02\x02\x02TS\x03\x02\x02\x02UV\x03\x02\x02\x02VT\x03\x02" +
+		"\x02\x02VW\x03\x02\x02\x02WX\x03\x02\x02\x02XY\x05\x14\v\x02Yd\x03\x02" +
+		"\x02\x02Z\\\x05\x02\x02\x02[Z\x03\x02\x02\x02\\]\x03\x02\x02\x02][\x03" +
+		"\x02\x02\x02]^\x03\x02\x02\x02^_\x03\x02\x02\x02_`\x05\x04\x03\x02`a\x07" +
+		"\x0F\x02\x02ab\x07\x10\x02\x02bd\x03\x02\x02\x02cK\x03\x02\x02\x02cM\x03" +
+		"\x02\x02\x02cT\x03\x02\x02\x02c[\x03\x02\x02\x02d\x11\x03\x02\x02\x02" +
+		"ej\x05\x06\x04\x02fg\x07\x03\x02\x02gi\x05\x06\x04\x02hf\x03\x02\x02\x02" +
+		"il\x03\x02\x02\x02jh\x03\x02\x02\x02jk\x03\x02\x02\x02ky\x03\x02\x02\x02" +
+		"lj\x03\x02\x02\x02mn\x07\x0F\x02\x02ns\x05\x06\x04\x02op\x07\x03\x02\x02" +
+		"pr\x05\x06\x04\x02qo\x03\x02\x02\x02ru\x03\x02\x02\x02sq\x03\x02\x02\x02" +
+		"st\x03\x02\x02\x02tv\x03\x02\x02\x02us\x03\x02\x02\x02vw\x07\x10\x02\x02" +
+		"wy\x03\x02\x02\x02xe\x03\x02\x02\x02xm\x03\x02\x02\x02y\x13\x03\x02\x02" +
+		"\x02z{\x05\x16\f\x02{|\x07\x04\x02\x02|}\x05\x18\r\x02}\x80\x03\x02\x02" +
+		"\x02~\x80\x05\x16\f\x02\x7Fz\x03\x02\x02\x02\x7F~\x03\x02\x02\x02\x80" +
+		"\x15\x03\x02\x02\x02\x81\x82\x07\v\x02\x02\x82\x83\x05\b\x05\x02\x83\x84" +
+		"\x07\f\x02\x02\x84\x8A\x03\x02\x02\x02\x85\x86\x07\r\x02\x02\x86\x87\x05" +
+		"\b\x05\x02\x87\x88\x07\x0E\x02\x02\x88\x8A\x03\x02\x02\x02\x89\x81\x03" +
+		"\x02\x02\x02\x89\x85\x03\x02\x02\x02\x8A\x17\x03\x02\x02\x02\x8B\x91\x05" +
+		"\n\x06\x02\x8C\x8D\x05\n\x06\x02\x8D\x8E\x07\x05\x02\x02\x8E\x8F\x05\x1A" +
+		"\x0E\x02\x8F\x91\x03\x02\x02\x02\x90\x8B\x03\x02\x02\x02\x90\x8C\x03\x02" +
+		"\x02\x02\x91\x19\x03\x02\x02\x02\x92\x95\x07\x07\x02\x02\x93\x95\x07\x06" +
+		"\x02\x02\x94\x92\x03\x02\x02\x02\x94\x93\x03\x02\x02\x02\x95\x1B\x03\x02" +
+		"\x02\x02\x14+26;@EIOV]cjsx\x7F\x89\x90\x94";
 	public static __ATN: ATN;
 	public static get _ATN(): ATN {
 		if (!McdlParser.__ATN) {
@@ -875,6 +932,28 @@ export class TypeNameContext extends ParserRuleContext {
 }
 
 
+export class TagContext extends ParserRuleContext {
+	public TAGTEXT(): TerminalNode { return this.getToken(McdlParser.TAGTEXT, 0); }
+	constructor(parent: ParserRuleContext | undefined, invokingState: number) {
+		super(parent, invokingState);
+	}
+	// @Override
+	public get ruleIndex(): number { return McdlParser.RULE_tag; }
+	// @Override
+	public enterRule(listener: McdlListener): void {
+		if (listener.enterTag) {
+			listener.enterTag(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: McdlListener): void {
+		if (listener.exitTag) {
+			listener.exitTag(this);
+		}
+	}
+}
+
+
 export class ProgramContext extends ParserRuleContext {
 	public NEWLINE(): TerminalNode[];
 	public NEWLINE(i: number): TerminalNode;
@@ -895,6 +974,15 @@ export class ProgramContext extends ParserRuleContext {
 		}
 	}
 	public EOF(): TerminalNode | undefined { return this.tryGetToken(McdlParser.EOF, 0); }
+	public tag(): TagContext[];
+	public tag(i: number): TagContext;
+	public tag(i?: number): TagContext | TagContext[] {
+		if (i === undefined) {
+			return this.getRuleContexts(TagContext);
+		} else {
+			return this.getRuleContext(i, TagContext);
+		}
+	}
 	public INDENT(): TerminalNode[];
 	public INDENT(i: number): TerminalNode;
 	public INDENT(i?: number): TerminalNode | TerminalNode[] {

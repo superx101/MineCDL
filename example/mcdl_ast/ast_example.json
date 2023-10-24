@@ -25,6 +25,11 @@
       ]
     },
     {
+      "type": "TagContext",
+      "text": "@(any text)",
+      "children": []
+    },
+    {
       "type": "VariableDeclareContext",
       "text": "    <target>:Target<<1",
       "children": [
@@ -69,6 +74,11 @@
       ]
     },
     {
+      "type": "TagContext",
+      "text": "@({name: \"player\", type: \"player\"})",
+      "children": []
+    },
+    {
       "type": "VariableDeclareContext",
       "text": "        [target]",
       "children": [
@@ -100,6 +110,11 @@
           ]
         }
       ]
+    },
+    {
+      "type": "TagContext",
+      "text": "@(a=1,b=\"2\")",
+      "children": []
     },
     {
       "type": "FunctionDeclareContext",
@@ -349,82 +364,6 @@
         {
           "type": "FuncNameContext",
           "text": "f4",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "VariableDeclareContext",
-      "text": "    <target>:Target",
-      "children": [
-        {
-          "type": "IndentContext",
-          "text": "    ",
-          "children": []
-        },
-        {
-          "type": "ExplicitVariableDefContext",
-          "text": "<target>:Target",
-          "children": [
-            {
-              "type": "MandVaribaleDefContext",
-              "text": "<target>",
-              "children": [
-                {
-                  "type": "VarNameContext",
-                  "text": "target",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "type": "ImplicitTypeDefContext",
-              "text": "Target",
-              "children": [
-                {
-                  "type": "TypeNameContext",
-                  "text": "Target",
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "FunctionDeclareContext",
-      "text": "        f5()",
-      "children": [
-        {
-          "type": "IndentContext",
-          "text": "    ",
-          "children": []
-        },
-        {
-          "type": "IndentContext",
-          "text": "    ",
-          "children": []
-        },
-        {
-          "type": "FuncNameContext",
-          "text": "f5",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "FunctionDeclareContext",
-      "text": "    f6()",
-      "children": [
-        {
-          "type": "IndentContext",
-          "text": "    ",
-          "children": []
-        },
-        {
-          "type": "FuncNameContext",
-          "text": "f6",
           "children": []
         }
       ]

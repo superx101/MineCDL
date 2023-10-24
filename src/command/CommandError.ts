@@ -1,4 +1,4 @@
-import { NodePtr, RootNode } from "./CommandTree";
+import { NodePtr } from "./CommandTree";
 
 export class CommandError extends Error {
     constructor(msg: string, location?: string) {

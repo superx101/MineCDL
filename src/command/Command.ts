@@ -4,27 +4,44 @@ import { RegisterError, CommandSyntaxError } from "./CommandError";
 export type Variable = any
 export type ErrorListener = (e: Error, logs: Log[], params: string[]) => void;
 /**
- * parse string array to variable, return null if string is illegal format
-*/
+ * A function that constructs a Variable from an array of strings, returns null if the string is in an illegal format.
+ */
 export type VariableConstructor = (subParams: string[]) => Variable | null;
-export type FunctionCallback = (params: string[], ...args: any) => void;
-export type Matches = [NodePtr, any]
 
+/**
+ * A callback function for a command.
+ */
+export type FunctionCallback = (params: string[], ...args: any) => void;
+
+/**
+ * Represents a match between a NodePtr and a value.
+ */
+export type Matches = [NodePtr, any];
+
+/**
+ * Enumeration for different types of logs.
+ */
 export enum LogType {
     INFO,
     WARN,
     ERROR
 }
 
+/**
+ * Represents the result of a match operation.
+ */
 export interface MatchResult {
-    mandatorys: Matches[]
-    optionals: Matches[]
+    mandatorys: Matches[];
+    optionals: Matches[];
 }
 
+/**
+ * Represents a log entry.
+ */
 export interface Log {
-    type: LogType
-    time: Date
-    msg: string
+    type: LogType;
+    time: Date;
+    msg: string;
 }
 
 export class CommandParser {
@@ -42,6 +59,14 @@ export class CommandParser {
     public sepRegExp: string = " +";
     public head: string = "/";
 
+    public get name(): string {
+        return this._name;
+    }
+
+    public set errorListener(listener: ErrorListener) {
+        this._errorListener = listener;
+    }
+
     constructor(cmdTree: CommandTree) {
         this._tree = cmdTree;
         this._rootEnums = (<EnumNode>cmdTree.root).enums;
@@ -50,19 +75,23 @@ export class CommandParser {
         this._varTypeUninitSet = new Set([...this._tree.varTypeSet]);
     }
 
-    get name(): string {
-        return this._name;
-    }
-
-    set errorListener(listener: ErrorListener) {
-        this._errorListener = listener;
-    }
-
+    /**
+     * Adds a log entry with the specified log type and message if log recording is enabled.
+     * @param logType - The type of the log entry.
+     * @param msg - The log message.
+     */
     protected addLog(logType: LogType, msg: string): void {
         if (!this.recordLog) return ;
         this.logs.push({ time: new Date(), type: logType, msg: msg });
     }
 
+    /**
+     * Eats a specified number of parameters from the input and updates the remaining string.
+     * @param params - The parameters array.
+     * @param text - The input text.
+     * @param count - The number of parameters to eat.
+     * @returns The remaining text after eating the parameters.
+     */
     protected eatParam(params: string[], text: string, count: number): string {
         for (let i = 0; i < count; ++i) {
             const p = params.shift();
@@ -80,6 +109,12 @@ export class CommandParser {
         return text;
     }
 
+    /**
+     * Matches an EnumNode against the parameter stack.
+     * @param fptr - The NodePtr to match against.
+     * @param paramStack - The parameter stack.
+     * @returns The match result.
+     */
     protected matchEnum(fptr: NodePtr, paramStack: string[]): MatchResult {
         const enumNodes = <EnumNode[]>fptr!.childs.filter((child) => child instanceof EnumNode);
         const mandatory: Matches[] = [];
@@ -96,6 +131,12 @@ export class CommandParser {
         return { mandatorys: mandatory, optionals: optional };
     }
 
+    /**
+     * Matches a VariableNode against the parameter stack.
+     * @param fptr - The NodePtr to match against.
+     * @param paramStack - The parameter stack.
+     * @returns The match result.
+     */
     protected matchVariable(fptr: NodePtr, paramStack: string[]): MatchResult {
         const varNodes = <VariableNode[]>fptr!.childs.filter((child)=> child instanceof VariableNode);
         const mandatory: Matches[] = [];
@@ -116,6 +157,11 @@ export class CommandParser {
         return { mandatorys: mandatory, optionals: optional };
     }
 
+    /**
+     * Matches the input text against the command tree.
+     * @param remStr - The remaining input text.
+     * @param paramStack - The parameter stack.
+     */
     protected match(remStr: string, paramStack: string[]): void {
         let fptr: NodePtr = new CommandNode();
         fptr.addChild(this._tree.root!);
@@ -185,6 +231,12 @@ export class CommandParser {
         callback!(this._params, ...variableArr);
     }
 
+    /**
+     * Registers a variable type and its constructor.
+     * @param type - The variable type to register.
+     * @param constructor - The constructor function for the variable type.
+     * @returns This CommandParser instance.
+     */
     public registerVarType(type: string, constructor: VariableConstructor): CommandParser {
         this._varConstructorMap.set(type, constructor);
         if (this._tree.varTypeSet.has(type))
@@ -194,6 +246,12 @@ export class CommandParser {
         return this;
     }
 
+    /**
+     * Registers a function with its callback.
+     * @param key - The function name to register.
+     * @param callback - The callback function for the function.
+     * @returns This CommandParser instance.
+     */
     public registerFunction(key: string, callback: FunctionCallback): CommandParser {
         this._fnCallbackMap.set(key, callback);
         if (this._tree.fnNameSet.has(key))
@@ -204,6 +262,12 @@ export class CommandParser {
         return this;
     }
 
+    /**
+     * Tests a variable type constructor with test parameters.
+     * @param type - The variable type to test.
+     * @param testParams - The test parameters.
+     * @returns True if the constructor is registered and the test succeeds, false otherwise.
+     */
     public testVarType(type: string, testParams: string[]): boolean {
         if (this._varTypeUninitSet.has(type)) {
             this.addLog(LogType.ERROR, `Variale type constructor: {${type}} is not registered`);
@@ -213,6 +277,11 @@ export class CommandParser {
         return constructor!(testParams) != null;
     }
 
+    /**
+     * Parses a command string.
+     * @param cmdText - The command string to parse.
+     * @returns True if parsing is successful, false if an error occurs.
+     */
     public parse(cmdText: string): boolean {
         this.addLog(LogType.INFO, `start parse command: ${cmdText}`);
         try {

@@ -3,6 +3,8 @@ grammar Mcdl;
 
 INTEGER: [0-9]+;
 NAME: [A-Za-z_][A-Za-z0-9_]*;
+TAGTEXT: '@' '(' .*? ')';
+STRING : '"' .*? '"';
 
 OPEN_ANGLE: '<';
 CLOSE_ANGLE: '>';
@@ -19,12 +21,13 @@ SW: ' '{0-3} -> skip;
 
 indent: INDENT;
 funcName: NAME;
-enumName:NAME;
+enumName: NAME;
 varName: NAME;
 typeName: NAME;
+tag: TAGTEXT;
 
 program
-    : NEWLINE* (statement NEWLINE*)+ ((NEWLINE|INDENT)* EOF)?
+    : NEWLINE* (statement (INDENT* tag)? NEWLINE*)+ ((NEWLINE|INDENT)* EOF)?
     ;
 
 statement
@@ -38,7 +41,6 @@ enumeration
     : enumName  ('|' enumName)* # MandEnumDef
     | OPEN_PAREN enumName  ('|' enumName)* CLOSE_PAREN # OptEnumDef
     ;
-
 
 variable
     : varTerm  ':'  type # ExplicitVariableDef

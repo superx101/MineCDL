@@ -4,7 +4,6 @@ import { ParseTree } from "antlr4ts/tree/ParseTree";
 import { McdlCommandTreeBuilder, ParseNode } from "../../src/mcdl/Builder";
 import { McdlLexer } from "../../src/mcdl/antlr/McdlLexer";
 import { McdlParser } from "../../src/mcdl/antlr/McdlParser";
-// import fs from "fs";
 
 class TestBuilder extends McdlCommandTreeBuilder {
     public getNodes(ctx: ParseTree, node: ParseNode) {
@@ -13,9 +12,9 @@ class TestBuilder extends McdlCommandTreeBuilder {
 }
 
 const code = `
-cmd1 | tp
-    <target>: Target << 1
-        [target]
+cmd1 | tp                      @(any text)
+    <target>: Target << 1      @({name: "player", type: "player"})
+        [target]               @(a=1,b="2")
             f1()
         <pos>: PosInt << 3
             f2()
@@ -29,16 +28,15 @@ cmd2
     f1()
 `;
 
-export function run() {
-    const cwd = process.cwd();
-    const input = CharStreams.fromString(code);
-    const lexer = new McdlLexer(input);
+const input = CharStreams.fromString(code);
+const lexer = new McdlLexer(input);
 
-    const tokens = new CommonTokenStream(lexer);
-    const parser = new McdlParser(tokens);
+const tokens = new CommonTokenStream(lexer);
+const parser = new McdlParser(tokens);
 
-    const ctx = parser.program();
-    const ptr = new ParseNode("virtual root", "", []);
-    console.log(JSON.stringify(new TestBuilder().getNodes(ctx, ptr), null, 2));
-    // fs.writeFileSync(cwd + "/assets/ast_example/ast_example.json", JSON.stringify(new TestBuilder().getNodes(ctx, ptr), null, 2));
-}
+const ctx = parser.program();
+const ptr = new ParseNode("virtual root", "", []);
+console.log(JSON.stringify(new TestBuilder().getNodes(ctx, ptr), null, 2));
+// import fs from "fs";
+// fs.writeFileSync(cwd + __dirname + "/ast_example.json", JSON.stringify(new TestBuilder().getNodes(ctx, ptr), null, 2));
+

@@ -7,8 +7,29 @@ import { McdlLexer } from "./antlr/McdlLexer";
 import { McdlParser } from "./antlr/McdlParser";
 import { TreeBuildError } from "../command/CommandError";
 
+export const Tag = "TagContext";
+export const Indent = "IndentContext";
+export const RootDeclare = "RootDeclareContext";
+export const EnumDeclare = "EnumDeclareContext";
+export const VariableDeclare = "VariableDeclareContext";
+export const FunctionDeclare = "FunctionDeclareContext";
+export const MandEnumDef = "MandEnumDefContext";
+export const OptEnumDef = "OptEnumDefContext";
+export const ExplicitVariableDef = "ExplicitVariableDefContext";
+export const ImplicitVariableDef = "ImplicitVariableDefContext";
+export const MandVaribaleDef = "MandVaribaleDefContext";
+export const OptVariableDef = "OptVariableDefContext";
+export const ImplicitTypeDef = "ImplicitTypeDefContext";
+export const ExplicitTypeDef = "ExplicitTypeDefContext";
+export const IntCount = "IntCountContext";
+export const MultiCount = "MultiCountContext";
+
 export class ParseNode {
-    constructor(public type: string, public text: string, public children: ParseNode[]) {}
+    constructor(
+        public type: string,
+        public text: string,
+        public children: ParseNode[]
+    ) {}
 
     public child(n: number): ParseNode {
         return this.children[n];
@@ -55,7 +76,7 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
         const enums: string[] = [];
         let isOptional = false;
 
-        if (enumDef.type == "OptEnumDefContext")
+        if (enumDef.type == OptEnumDef)
             isOptional = true;
 
         for (const nameDef of enumDef.children)
@@ -73,13 +94,13 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
         let type: null | string = null;
         let countPn;
         let count = -1;
-        if (varDefPn.type == "ExplicitVariableDefContext") {
+        if (varDefPn.type == ExplicitVariableDef) {
             const typeDef = varDefPn.child(1);
             type = typeDef.child(0).text;
-            if (typeDef.type == "ExplicitTypeDefContext") {
+            if (typeDef.type == ExplicitTypeDef) {
                 countPn = typeDef.child(1);
                 // count is mutil or limited
-                if (countPn && countPn.type == "IntCountContext")
+                if (countPn && countPn.type == IntCount)
                     count = parseInt(countPn.text);
             }
             else {
@@ -89,7 +110,7 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
 
         // is Mand or Opt
         let isOptional = false;
-        if (varDefChildPn.type == "OptVariableDefContext")
+        if (varDefChildPn.type == OptVariableDef)
             isOptional = true;
 
         return new VariableNode(name, type, isOptional, count);
@@ -100,7 +121,7 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
     }
 
     protected getLayer(pn: ParseNode): number {
-        return pn.children.filter((child) => child.type === "IndentContext").length;
+        return pn.children.filter((child) => child.type === Indent).length;
     }
 
     protected buildByAST(ctx: ProgramContext, mode: CommandTreeMode): CommandTree[] {
@@ -113,18 +134,21 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
             let node: NodePtr;
 
             switch (pChild.type) {
-            case "RootDeclareContext":
+            case RootDeclare:
                 node = this.makeRootNode(pChild);
                 break;
-            case "EnumDeclareContext":
+            case EnumDeclare:
                 node = this.makeEnumNode(pChild);
                 break;
-            case "VariableDeclareContext":
+            case VariableDeclare:
                 node = this.makeVariableNode(pChild);
                 break;
-            case "FunctionDeclareContext":
+            case FunctionDeclare:
                 node = this.makeFunctionNode(pChild);
                 break;
+            case Tag:
+                fptr!.tag = pChild.text.substring(2, pChild.text.length - 1);
+                return;
             }
 
             const layer = this.getLayer(pChild);
@@ -148,6 +172,7 @@ export class McdlCommandTreeBuilder extends CommandTreeBuilder {
 
     public build(code: string, mode: CommandTreeMode = CommandTreeMode.LOOSE, error?: (e: Error)=>void): CommandTree[] | null {
         try {
+            code = code.replace(/ +$/gm, ""); // remove space after text for every line
             const lexer = new McdlLexer(CharStreams.fromString(code));
             const tokens = new CommonTokenStream(lexer);
             const parser = new McdlParser(tokens);
