@@ -88,7 +88,7 @@ export class ClassMaker {
             let fn = "else if";
             if (index == 0)
                 fn = "if";
-            const block = new BlockCode(`${fn} (result.${this.getID(child)})`);
+            const block = new BlockCode(`${fn} (result.${(<VariableNode | EnumNode>child).name})`);
             (<BlockCode>parentContent).add(block);
             this._callbackTraverse(child, block);
         });
@@ -139,6 +139,7 @@ export class ClassMaker {
         const id = this.getID(node);
         let name = tag.def(`"${node.name}"`).get("name");
         name = name.substring(1, name.length - 1);
+        node.name = name; // update node name
 
         if (this._enumNameSet.has(name))
             return ;
