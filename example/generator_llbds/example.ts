@@ -9,7 +9,6 @@ const trees = builder.build(mcdl, CommandTreeMode.STRICT, (e) => {
 
 if (trees) {
     const generator = new LL.ScriptGenerator()
-    // const dir = "C:\\Users\\li\\Desktop\\bedrock-server-1.20.32.03\\plugins\\command";
     const dir = __dirname + "/command";
     generator.generate(trees, dir + "/js", LL.ScriptLang.JavaScript, LL.ScriptModule.CommonJS);
     generator.generate(trees, dir + "/ts", LL.ScriptLang.TypeScript, LL.ScriptModule.ES);
