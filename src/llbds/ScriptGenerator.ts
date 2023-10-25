@@ -282,6 +282,8 @@ export class ScriptGenerator extends CodeGenerator {
      *
      * @param trees - An array of CommandTree.
      * @param distDir - The directory to save the generated code files.
+     * @param language - The language of generated code files.
+     * @defaultValue `ScriptLang.JavaScript`
      * @param module - The module of export type (ES or CommonJS).
      * @defaultValue `Module.CommonJS`
      * @override {@link CodeGenerator}
@@ -331,7 +333,7 @@ export class ScriptGenerator extends CodeGenerator {
                         if (writeError)
                             console.error(writeError);
                         else
-                            console.log(`Successfully wrote file: ${filePath}`);
+                            console.log(`Successfully wrote file: ${path.resolve(filePath)}`);
                     });
             });
         }
