@@ -61,7 +61,7 @@ export class ClassMaker {
             const paramNodes = node.parameterChain();
             const parameters: ParameterCode[] = [];
             for (const node of paramNodes)
-                parameters.push(new ParameterCode(node.name, node.type!, (node instanceof VariableNode)));
+                parameters.push(new ParameterCode(node.name, node.type!, node.isOptional, (node instanceof VariableNode)));
 
             const paramsString = parameters.map(param => `result.${param.name}`).join(", ");
             parentContent.add(new StatementsCode([`return this.${node.name}(${paramsString});`]));

@@ -56,8 +56,6 @@ export class EnumNode extends CommandNode {
         this.name = enums.join("_");
 
         const arr = enums.map((str)=> `"${str}"`);
-        if (this.isOptional)
-            arr.push("null");
         this.type = arr.join(" | ");
     }
 

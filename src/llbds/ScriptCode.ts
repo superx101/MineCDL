@@ -81,6 +81,7 @@ export class ParameterCode {
     constructor(
         public name: string,
         public type: string = "",
+        public optional: boolean = false,
         public convert: boolean = false
     ) {
         if (convert && type != "")
@@ -89,7 +90,8 @@ export class ParameterCode {
 
     /** @override  */
     public tostring(): string {
-        return TypeUtil.SetType(this.name, this.type);
+        const type = this.type + (this.optional ? " | undefined" : "");
+        return TypeUtil.SetType(this.name, type);
     }
 }
 

@@ -71,15 +71,15 @@ abstract class TestCommandAbstract {
         }
     }
     
-    protected abstract f1(player: "player", players: LLSE_Player[], pos: IntPos): any; 
+    protected abstract f1(player: "player", players: LLSE_Player[], pos: IntPos | undefined): any; 
     
-    protected abstract f2(player: "player", pos: IntPos): any; 
+    protected abstract f2(player: "player", pos: IntPos | undefined): any; 
     
     protected abstract f4(other: "other" | "o", number: number, hollow: "hollow"): any; 
     
-    protected abstract f3(other: "other" | "o", number: number, replace: "replace" | null): any; 
+    protected abstract f3(other: "other" | "o", number: number, replace: "replace" | undefined): any; 
     
-    protected abstract f5(other: "other" | "o", block: LLSE_Block, item: LLSE_Item): any; 
+    protected abstract f5(other: "other" | "o", block: LLSE_Block | undefined, item: LLSE_Item | undefined): any; 
 }
 
 export { TestCommandAbstract };
