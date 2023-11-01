@@ -196,26 +196,20 @@ class TestCommandAbstract {
     }
     
     callback(command, origin, output, result) {
-        if (result.player) {
-            if (result.players) {
+         if (result.player !== undefined) {
+            if (result.players !== undefined) {
                 return this.f1(result.player, result.players, result.pos);
             }
-            else {
-                return this.f2(result.player, result.pos);
-            }
+            return this.f2(result.player, result.pos);
         }
-        else if (result.other) {
-            if (result.number) {
-                if (result.hollow) {
+        else if (result.other !== undefined) {
+            if (result.number !== undefined) {
+                if (result.hollow !== undefined) {
                     return this.f4(result.other, result.number, result.hollow);
                 }
-                else {
-                    return this.f3(result.other, result.number, result.replace);
-                }
+                return this.f3(result.other, result.number, result.replace);
             }
-            else {
-                return this.f5(result.other, result.block, result.item);
-            }
+            return this.f5(result.other, result.block, result.item);
         }
     }
     

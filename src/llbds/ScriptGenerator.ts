@@ -88,16 +88,13 @@ export class ClassMaker {
             let fn = "else if";
             if (index == 0)
                 fn = "if";
-            const block = new BlockCode(`${fn} (result.${(<VariableNode | EnumNode>child).name})`);
+            const block = new BlockCode(`${fn} (result.${(<VariableNode | EnumNode>child).name} !== undefined)`);
             (<BlockCode>parentContent).add(block);
             this._callbackTraverse(child, block);
         });
 
-        if (optionalNode) {
-            const block = new BlockCode("else");
-            (<BlockCode>parentContent).add(block);
-            this._callbackTraverse(optionalNode, block);
-        }
+        if (optionalNode)
+            this._callbackTraverse(optionalNode, parentContent);
     }
 
     /**
