@@ -224,6 +224,11 @@ class TestCommand extends TestCommandAbstract {
         log("f5", other_o, block, item);
         // ...
     }
+}
+
+// main.js
+const testCmd = new TestCommand();
+testCmd.register();
 ```
 
 
