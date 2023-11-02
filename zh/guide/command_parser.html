@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="简体中文">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>命令解析器 | MineCDL</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/MineCDL/assets/css/0.styles.c0fa6529.css" as="style"><link rel="preload" href="/MineCDL/assets/js/app.1dbe44ae.js" as="script"><link rel="preload" href="/MineCDL/assets/js/2.8e3b7747.js" as="script"><link rel="preload" href="/MineCDL/assets/js/1.0ac915e0.js" as="script"><link rel="preload" href="/MineCDL/assets/js/28.614b96e5.js" as="script"><link rel="prefetch" href="/MineCDL/assets/js/10.653f2773.js"><link rel="prefetch" href="/MineCDL/assets/js/11.be71ba10.js"><link rel="prefetch" href="/MineCDL/assets/js/12.16933326.js"><link rel="prefetch" href="/MineCDL/assets/js/13.352876c3.js"><link rel="prefetch" href="/MineCDL/assets/js/14.aa7e042f.js"><link rel="prefetch" href="/MineCDL/assets/js/15.b7440231.js"><link rel="prefetch" href="/MineCDL/assets/js/16.767a3a88.js"><link rel="prefetch" href="/MineCDL/assets/js/17.e290fa5a.js"><link rel="prefetch" href="/MineCDL/assets/js/18.baeb50d2.js"><link rel="prefetch" href="/MineCDL/assets/js/19.9f389a20.js"><link rel="prefetch" href="/MineCDL/assets/js/20.c55ac021.js"><link rel="prefetch" href="/MineCDL/assets/js/21.d04ba12b.js"><link rel="prefetch" href="/MineCDL/assets/js/22.bd455cd7.js"><link rel="prefetch" href="/MineCDL/assets/js/23.b363a82a.js"><link rel="prefetch" href="/MineCDL/assets/js/24.1142e312.js"><link rel="prefetch" href="/MineCDL/assets/js/25.31bbb669.js"><link rel="prefetch" href="/MineCDL/assets/js/26.eaba0eeb.js"><link rel="prefetch" href="/MineCDL/assets/js/27.83a51698.js"><link rel="prefetch" href="/MineCDL/assets/js/29.cd73c858.js"><link rel="prefetch" href="/MineCDL/assets/js/3.963f93b8.js"><link rel="prefetch" href="/MineCDL/assets/js/30.cb4dc6c9.js"><link rel="prefetch" href="/MineCDL/assets/js/31.9b36c768.js"><link rel="prefetch" href="/MineCDL/assets/js/4.8d42542a.js"><link rel="prefetch" href="/MineCDL/assets/js/5.edbb760b.js"><link rel="prefetch" href="/MineCDL/assets/js/6.7a8bd171.js"><link rel="prefetch" href="/MineCDL/assets/js/7.93fcf6e6.js"><link rel="prefetch" href="/MineCDL/assets/js/vendors~docsearch.5a4296f1.js">
+    <link rel="stylesheet" href="/MineCDL/assets/css/0.styles.c0fa6529.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/MineCDL/zh/" class="home-link router-link-active"><!----> <span class="site-name">MineCDL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/MineCDL/zh/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/MineCDL/zh/guide/mcdl.html" class="nav-link">
+  指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MineCDL/guide/command_parser.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/MineCDL/zh/guide/command_parser.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/superx101/MineCDL" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MineCDL/zh/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/MineCDL/zh/guide/mcdl.html" class="nav-link">
+  指南
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MineCDL/guide/command_parser.html" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/MineCDL/zh/guide/command_parser.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/superx101/MineCDL" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/MineCDL/zh/guide/mcdl.html" class="sidebar-link">MCDL</a></li><li><a href="/MineCDL/zh/guide/command_parser.html" aria-current="page" class="active sidebar-link">命令解析器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/MineCDL/zh/guide/command_parser.html#介绍" class="sidebar-link">介绍</a></li><li class="sidebar-sub-header"><a href="/MineCDL/zh/guide/command_parser.html#命令树" class="sidebar-link">命令树</a></li><li class="sidebar-sub-header"><a href="/MineCDL/zh/guide/command_parser.html#命令树模式" class="sidebar-link">命令树模式</a></li><li class="sidebar-sub-header"><a href="/MineCDL/zh/guide/command_parser.html#二义性问题" class="sidebar-link">二义性问题</a></li></ul></li><li><a href="/MineCDL/zh/guide/generator.html" class="sidebar-link">代码生成器</a></li><li><a href="/MineCDL/zh/guide/generator_llbds.html" class="sidebar-link">LLBDS 代码生成器</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="命令解析器"><a href="#命令解析器" class="header-anchor">#</a> 命令解析器</h1> <h2 id="介绍"><a href="#介绍" class="header-anchor">#</a> 介绍</h2> <p>命令解析器是独立于MCDL的模块，使用命令树来解析《我的世界》格式的命令。本项目中使用MCDL解析器来生成命令树，如果你不想使用MCDL，也可以自己编写命令树生成器。</p> <h2 id="命令树"><a href="#命令树" class="header-anchor">#</a> 命令树</h2> <p>命令树的格式与MCDL中定义的相同，由根节点、枚举、变量、处理函数组成。提供变量类型推断机制，自动补全没有定义类型的变量。</p> <p>命令树是一种通用的中间结构，因此你也可以编写一个JSON的构建器来通过JSON生成命令树，然后编写一个生成器把命令树转化为java代码。</p> <h2 id="命令树模式"><a href="#命令树模式" class="header-anchor">#</a> 命令树模式</h2> <p>不是所有命令树都能很好地被解析，《我的世界》中常常使用一些固定参数来限定命令树的解析。
+例如 <code>scoreboard objectives</code> 和 <code>scoreboard players</code></p> <p>而MineCDL中的命令树没有强制要求这些限定，而不限定的方式被叫做 <code>宽松模式</code>。相反，限定树格式的方式叫做 <code>严格模式</code></p> <h3 id="宽松模式"><a href="#宽松模式" class="header-anchor">#</a> 宽松模式</h3> <p>非限定的方式带来了一定的灵活性。比如下面用MCDL描述的命令树中，仅输入 <code>test</code> 时也会对 <code>f1</code> 进行匹配。</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    (a)
+        f1()
+    (b)
+        (c)
+            f2()
+</code></pre></div><h3 id="严格模式"><a href="#严格模式" class="header-anchor">#</a> 严格模式</h3> <p>参考宽松模式中的MCDL，为了消除<a href="#%E4%BA%8C%E4%B9%89%E6%80%A7%E9%97%AE%E9%A2%98">二义性</a>，严格模式禁止了某个结点下存在多个可选结点。</p> <h2 id="二义性问题"><a href="#二义性问题" class="header-anchor">#</a> 二义性问题</h2> <p>在命令解析过程中，一个参数可能对应多个分支，导致程序将不能很好地选择该进入那个分支
+，本项目把这种分支不确定称作二义性。</p> <h3 id="可选参数二义性"><a href="#可选参数二义性" class="header-anchor">#</a> 可选参数二义性</h3> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>使用 严格模式 构建的树不会出现这个问题</p></div> <p>当某一个结点下存在多个可选分支时存在二义性。
+以下面的MCDL为例，输入 <code>test</code> 时，<code>f1</code> <code>f2</code> <code>f3</code> <code>f4</code> 都可能被执行。</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    [v]: Variable
+        f1()
+    (a)
+        f2()
+    (b)
+        f3()
+    (c)
+        (d)
+            f4()
+    &lt;v&gt;: Variable
+        f5()
+
+</code></pre></div><h4 id="解决方案"><a href="#解决方案" class="header-anchor">#</a> 解决方案</h4> <p>当前解析器采用 <code>枚举最小链优先策略</code> 来解决这个二义性，即匹配深度最小的那个分支，本例中为 <code>f1</code> <code>f2</code> <code>f3</code>。</p> <p>当分支相同时，优先匹配枚举。若此时还存在多个枚举，则匹配第一个定义的枚举，本例中则为 <code>f2</code> 被匹配。</p> <p>因此，你在定义MCDL时应当注意同个结点下不能存在多个可选结点。
+或者选择 <code>严格模式</code> TODO 来让程序构建树时检查。</p> <h3 id="变量二义性"><a href="#变量二义性" class="header-anchor">#</a> 变量二义性</h3> <div class="custom-block warning"><p class="custom-block-title">注意</p> <p>变量二义性不能被程序检查，往往在定义变量时很容易出现</p></div> <p>当某个结点下的多个变量结点间存在交集时，存在该二义性。
+以下面MCDL为例，当输入 <code>test 10</code> 时，<code>number</code> 和 <code>int</code> 均可匹配。</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    &lt;number&gt;: Number
+        f1()
+    &lt;int&gt;: Int
+        f2()
+</code></pre></div><h4 id="解决方案-2"><a href="#解决方案-2" class="header-anchor">#</a> 解决方案</h4> <p>命令解析器根据定义变量的先后顺序，匹配第一个符合条件的分支。
+本例中则匹配 <code>f1</code>。</p> <p>如果你想匹配 <code>f2</code>，则需要把 int 定义在 number 上方。
+<strong>由此可得，在不确定变量间是否存在交集时，应当按照集合范围从上到下依次定义变量。或按一定的优先级定义</strong>。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/superx101/MineCDL/edit/main/docs/zh/guide/command_parser.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/MineCDL/zh/guide/mcdl.html" class="prev">
+        MCDL
+      </a></span> <span class="next"><a href="/MineCDL/zh/guide/generator.html">
+        代码生成器
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/MineCDL/assets/js/app.1dbe44ae.js" defer></script><script src="/MineCDL/assets/js/2.8e3b7747.js" defer></script><script src="/MineCDL/assets/js/1.0ac915e0.js" defer></script><script src="/MineCDL/assets/js/28.614b96e5.js" defer></script>
+  </body>
+</html>

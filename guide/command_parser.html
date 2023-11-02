@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="English">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Command parser | MineCDL</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/MineCDL/assets/css/0.styles.c0fa6529.css" as="style"><link rel="preload" href="/MineCDL/assets/js/app.1dbe44ae.js" as="script"><link rel="preload" href="/MineCDL/assets/js/2.8e3b7747.js" as="script"><link rel="preload" href="/MineCDL/assets/js/1.0ac915e0.js" as="script"><link rel="preload" href="/MineCDL/assets/js/23.b363a82a.js" as="script"><link rel="prefetch" href="/MineCDL/assets/js/10.653f2773.js"><link rel="prefetch" href="/MineCDL/assets/js/11.be71ba10.js"><link rel="prefetch" href="/MineCDL/assets/js/12.16933326.js"><link rel="prefetch" href="/MineCDL/assets/js/13.352876c3.js"><link rel="prefetch" href="/MineCDL/assets/js/14.aa7e042f.js"><link rel="prefetch" href="/MineCDL/assets/js/15.b7440231.js"><link rel="prefetch" href="/MineCDL/assets/js/16.767a3a88.js"><link rel="prefetch" href="/MineCDL/assets/js/17.e290fa5a.js"><link rel="prefetch" href="/MineCDL/assets/js/18.baeb50d2.js"><link rel="prefetch" href="/MineCDL/assets/js/19.9f389a20.js"><link rel="prefetch" href="/MineCDL/assets/js/20.c55ac021.js"><link rel="prefetch" href="/MineCDL/assets/js/21.d04ba12b.js"><link rel="prefetch" href="/MineCDL/assets/js/22.bd455cd7.js"><link rel="prefetch" href="/MineCDL/assets/js/24.1142e312.js"><link rel="prefetch" href="/MineCDL/assets/js/25.31bbb669.js"><link rel="prefetch" href="/MineCDL/assets/js/26.eaba0eeb.js"><link rel="prefetch" href="/MineCDL/assets/js/27.83a51698.js"><link rel="prefetch" href="/MineCDL/assets/js/28.614b96e5.js"><link rel="prefetch" href="/MineCDL/assets/js/29.cd73c858.js"><link rel="prefetch" href="/MineCDL/assets/js/3.963f93b8.js"><link rel="prefetch" href="/MineCDL/assets/js/30.cb4dc6c9.js"><link rel="prefetch" href="/MineCDL/assets/js/31.9b36c768.js"><link rel="prefetch" href="/MineCDL/assets/js/4.8d42542a.js"><link rel="prefetch" href="/MineCDL/assets/js/5.edbb760b.js"><link rel="prefetch" href="/MineCDL/assets/js/6.7a8bd171.js"><link rel="prefetch" href="/MineCDL/assets/js/7.93fcf6e6.js"><link rel="prefetch" href="/MineCDL/assets/js/vendors~docsearch.5a4296f1.js">
+    <link rel="stylesheet" href="/MineCDL/assets/css/0.styles.c0fa6529.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/MineCDL/" class="home-link router-link-active"><!----> <span class="site-name">MineCDL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/MineCDL/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/MineCDL/guide/mcdl.html" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MineCDL/guide/command_parser.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/MineCDL/zh/guide/command_parser.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/superx101/MineCDL" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MineCDL/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/MineCDL/guide/mcdl.html" class="nav-link">
+  Guide
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Select language" class="dropdown-title"><span class="title">Languages</span> <span class="arrow down"></span></button> <button type="button" aria-label="Select language" class="mobile-dropdown-title"><span class="title">Languages</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/MineCDL/guide/command_parser.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/MineCDL/zh/guide/command_parser.html" class="nav-link">
+  简体中文
+</a></li></ul></div></div> <a href="https://github.com/superx101/MineCDL" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/MineCDL/guide/mcdl.html" class="sidebar-link">MCDL</a></li><li><a href="/MineCDL/guide/command_parser.html" aria-current="page" class="active sidebar-link">Command parser</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/MineCDL/guide/command_parser.html#introduction" class="sidebar-link">Introduction</a></li><li class="sidebar-sub-header"><a href="/MineCDL/guide/command_parser.html#command-tree" class="sidebar-link">Command tree</a></li><li class="sidebar-sub-header"><a href="/MineCDL/guide/command_parser.html#command-tree-modes" class="sidebar-link">Command tree modes</a></li><li class="sidebar-sub-header"><a href="/MineCDL/guide/command_parser.html#ambiguity" class="sidebar-link">Ambiguity</a></li></ul></li><li><a href="/MineCDL/guide/generator.html" class="sidebar-link">Code Generator</a></li><li><a href="/MineCDL/guide/generator_llbds.html" class="sidebar-link">LLBDS Code Generator</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="command-parser"><a href="#command-parser" class="header-anchor">#</a> Command parser</h1> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Translated with www.DeepL.com/Translator</p></div> <h2 id="introduction"><a href="#introduction" class="header-anchor">#</a> Introduction</h2> <p>The command parser is a separate module from MCDL that uses a command tree to parse commands in My World format. This project uses the MCDL parser to generate the command tree. If you don't want to use MCDL, you can also write your own command tree generator.</p> <h2 id="command-tree"><a href="#command-tree" class="header-anchor">#</a> Command tree</h2> <p>The format of the command tree is the same as that defined in MCDL, consisting of a root node, enumerations, variables, and handler functions. A variable type inference mechanism is provided to automatically complete variables of undefined types.</p> <p>Command tree is a generic intermediate structure, so you can also write a JSON builder to generate the command tree from JSON, and then write a generator to convert the command tree to java code.</p> <h2 id="command-tree-modes"><a href="#command-tree-modes" class="header-anchor">#</a> Command tree modes</h2> <p>Not all command trees are parsed well, and My World often uses some fixed parameters to qualify the parsing of command trees.
+For example, <code>scoreboard objectives</code> and <code>scoreboard players</code>.</p> <p>The command tree in MineCDL does not enforce these qualifications, and the way in which it is not qualified is called <code>loose mode''. Instead, the way the tree is formatted is called</code>strict mode''.</p> <h3 id="loose-mode"><a href="#loose-mode" class="header-anchor">#</a> Loose mode</h3> <p>The unqualified approach provides some flexibility. For example, in the following command tree described in MCDL, <code>f1</code> is also matched when only <code>test</code> is entered.</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    (a)
+        f1()
+    (b)
+        (c)
+            f2()
+</code></pre></div><h3 id="strict-mode"><a href="#strict-mode" class="header-anchor">#</a> Strict mode</h3> <p>Referring to MCDL in loose mode, to eliminate [duality] (## duality problem), strict mode prohibits the existence of multiple optional nodes under a given node.</p> <h2 id="ambiguity"><a href="#ambiguity" class="header-anchor">#</a> Ambiguity</h2> <p>During instruction parsing, a single argument may correspond to more than one branch, resulting in a program that will not be able to make a good choice of which branch to go into
+This project refers to this branching uncertainty as duality.</p> <h3 id="optional-parameter-duality"><a href="#optional-parameter-duality" class="header-anchor">#</a> Optional parameter duality</h3> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Trees built using strict mode do not suffer from this problem.</p></div> <p>Duality exists when there are multiple optional branches under a node.
+Take the following MCDL as an example, when typing <code>test</code>, <code>f1</code> <code>f2</code> <code>f3</code> <code>f4</code> may all be executed.</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    [v]: Variable
+        f1()
+    (a)
+        f2()
+    (b)
+        f3()
+    (c)
+        (d)
+            f4()
+    &lt;v&gt;: Variable
+        f5()
+
+</code></pre></div><h4 id="solution"><a href="#solution" class="header-anchor">#</a> Solution</h4> <p>The current parser resolves this dichotomy using the <code>enumeration least chain first strategy</code>, i.e., it matches the branch with the least depth, in this case <code>f1</code> <code>f2</code> <code>f3</code>.</p> <p>When the branches are the same, the enumeration is matched first. If more than one enumeration exists at this point, the first defined enumeration is matched, in this case <code>f2</code> is matched.</p> <p>Therefore, you should be careful not to have more than one optional node under the same node when defining the MCDL.
+Alternatively, choose <code>strict mode</code> TODO to have the program check this when building the tree.</p> <h3 id="variable-duality"><a href="#variable-duality" class="header-anchor">#</a> Variable duality</h3> <div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>Variable duality cannot be checked by the program, and is often easily seen when defining variables.</p></div> <p>This duality exists when there is an intersection between multiple variable nodes under a given node.
+For example, in the following MCDL, when <code>test 10</code> is entered, both <code>number</code> and <code>int</code> match.</p> <div class="language- extra-class"><pre class="language-text"><code>test
+    &lt;number&gt;: Number
+        f1()
+    &lt;int&gt;: Int
+        f2()
+</code></pre></div><h4 id="solution-2"><a href="#solution-2" class="header-anchor">#</a> Solution</h4> <p>The command parser matches the first branch that matches the condition based on the order in which the variables are defined.
+In this case, it matches <code>f1</code>.</p> <p>If you want to match <code>f2</code>, you need to define int above number.
+** It follows from this that when you are not sure if there is an intersection between variables, you should define variables in order from top to bottom of the set range. Or define them in a certain order of priority**.</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/superx101/MineCDL/edit/main/docs/guide/command_parser.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/MineCDL/guide/mcdl.html" class="prev">
+        MCDL
+      </a></span> <span class="next"><a href="/MineCDL/guide/generator.html">
+        Code Generator
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/MineCDL/assets/js/app.1dbe44ae.js" defer></script><script src="/MineCDL/assets/js/2.8e3b7747.js" defer></script><script src="/MineCDL/assets/js/1.0ac915e0.js" defer></script><script src="/MineCDL/assets/js/23.b363a82a.js" defer></script>
+  </body>
+</html>
